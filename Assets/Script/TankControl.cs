@@ -104,8 +104,8 @@ public class TankControl : MonoBehaviour
     {
         Vector3 aimDir = aimTo.position - canon.position;
         prefab = Instantiate(rocketPrefab, aimTo.position, aimTo.rotation);
-        prefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
-        Destroy(prefab, 1);//temp
+        prefab.GetComponent<Rigidbody>().AddForce(aimDir * 30000f);
+        Destroy(prefab, 5);//temp
 
 
     }
