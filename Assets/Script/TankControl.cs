@@ -15,6 +15,7 @@ public class TankControl : MonoBehaviour
     public Transform aimTo;
 
     public GameObject rocketPrefab;
+    public GameObject kaBoomPrefab;
 
     public float Force, RotSpeed, breakForce, towerRotationSpeed;
 
@@ -70,7 +71,7 @@ public class TankControl : MonoBehaviour
             wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
             if (Input.GetKey(KeyCode.Space))
                 wheelCols.brakeTorque = breakForce;
-            else if (rightPower == 0f)
+            else if (leftPower == 0f)
                 wheelCols.brakeTorque = engineBreakForce;
             else
                 wheelCols.brakeTorque = 0f;
@@ -104,6 +105,7 @@ public class TankControl : MonoBehaviour
     {
         Vector3 aimDir = aimTo.position - canon.position;
         prefab = Instantiate(rocketPrefab, aimTo.position, aimTo.rotation);
+        Instantiate(kaBoomPrefab, aimTo.position, aimTo.rotation);
         prefab.GetComponent<Rigidbody>().AddForce(aimDir * 30000f);
         Destroy(prefab, 5);//temp
 
