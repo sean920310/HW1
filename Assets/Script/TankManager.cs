@@ -26,6 +26,7 @@ public class TankManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -0.2f, 0);
         engineBreakForce = breakForce / 2f;
     }
 
