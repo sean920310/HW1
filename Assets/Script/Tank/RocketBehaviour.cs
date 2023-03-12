@@ -24,13 +24,15 @@ public class RocketBehaviour : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Rocket Collision");
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<TankManager>().damage();
+        }
         rocketDestory();
     }
 
     private void rocketDestory()
     {
-        Debug.Log("Destory Now");
         explosion.Play();
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<MeshRenderer>().enabled = false;

@@ -37,6 +37,8 @@ public class TankManager : MonoBehaviour
 
     [HeaderAttribute("Tank Game Parameter")]
     public float health;
+    public float maxHealth = 100;
+    public float rocketDamage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -142,6 +144,12 @@ public class TankManager : MonoBehaviour
             tower.Rotate(new Vector3(0f, -towerRotationSpeed, 0f));
         }
         canon.rotation = Quaternion.Euler(canonRotate, tower.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
+
+    public void damage()
+    {
+        health -= rocketDamage;
+        if(health < 0) health = 0;
     }
 
     private void tankEngineSound()

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - BackGroundMusic
+  - Enemy
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Ground
   - Player
   - Minimap
-  - 
+  - Bot
   - 
   - 
   - 

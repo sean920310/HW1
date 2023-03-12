@@ -5,7 +5,9 @@ using UnityEngine;
 
 /* reference: https://www.youtube.com/watch?v=r3nwTGLHygI&ab_channel=Comp-3Interactive */
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+
 public class ReadOnlyDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -20,3 +22,4 @@ public class ReadOnlyDrawer : PropertyDrawer
         GUI.enabled = previousGUIState;
     }
 }
+#endif

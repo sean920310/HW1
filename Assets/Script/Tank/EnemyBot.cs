@@ -21,6 +21,7 @@ public class EnemyBot : MonoBehaviour
     public float enemySightRadius;
     public float walkRange;
     public float attackRange;
+    public float sightFOV;
 
     public float idleTime;
 
@@ -72,7 +73,7 @@ public class EnemyBot : MonoBehaviour
         sightEular = transform.rotation.eulerAngles;
         dirEularDelta = (playerDirEular - sightEular);
 
-        playerInSight = Physics.CheckSphere(transform.position, enemySightRadius, playerMask) && Mathf.Abs(dirEularDelta.y) < 30.0f;
+        playerInSight = Physics.CheckSphere(transform.position, enemySightRadius, playerMask) && Mathf.Abs(dirEularDelta.y) < sightFOV;
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerMask);
 
         // get new walkpoint if stuck too long
@@ -165,6 +166,7 @@ public class EnemyBot : MonoBehaviour
 
     private void randomTowerRotation()
     {
+
         tankManager.TowerAndCanonRotation(sightEular);
     }
     private void towerRotation()
