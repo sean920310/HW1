@@ -9,12 +9,6 @@ public class TankManager : MonoBehaviour
     public WheelCollider[] rightWheelColliders;
     public WheelCollider[] leftWheelColliders;
 
-    public Transform tower;
-    public Transform canon;
-    public Transform aimTo;
-
-    public GameObject rocketPrefab;
-
     public float Force, RotSpeed, breakForce, towerRotationSpeed;
 
     Vector3 pos;
@@ -23,17 +17,44 @@ public class TankManager : MonoBehaviour
     float towerRotate, canonRotate;
     GameObject prefab;
 
+    [HeaderAttribute("Rocket")]
+    public Transform tower;
+    public Transform canon;
+    public Transform aimTo;
+
+    public GameObject rocketPrefab;
+    public float rocketCoolDown;
+    private float rocketFiringCounter;
+
+
+    [HeaderAttribute("Audio")]
+    public float enginePitchMax;
+
+    public AudioSource engineSound;
+    public AudioSource RocketFiringSound;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -0.2f, 0);
+        engineSound.spatialBlend = 1.0f;
+        RocketFiringSound.spatialBlend = 1.0f;
+
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = new Vector3(0, -0.2f, 0);
+
         engineBreakForce = breakForce / 2f;
+
+        rocketFiringCounter = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         WheelMeshUpdate();
+        tankEngineSound();
+
+        rocketFiringCounter -= Time.deltaTime;
+        rocketFiringCounter = rocketFiringCounter <= 0f ? 0f : rocketFiringCounter;
     }
     private void WheelMeshUpdate()
     {
@@ -84,10 +105,15 @@ public class TankManager : MonoBehaviour
 
     public void Fire()
     {
-        Vector3 aimDir = aimTo.position - canon.position;
-        prefab = Instantiate(rocketPrefab, aimTo.position, aimTo.rotation);
-        prefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
-        Destroy(prefab, 1);//temp
+        if(rocketFiringCounter <= 0)
+        {
+            RocketFiringSound.Play();
+            rocketFiringCounter = rocketCoolDown;
+            Vector3 aimDir = aimTo.position - canon.position;
+            prefab = Instantiate(rocketPrefab, aimTo.position, aimTo.rotation);
+            prefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
+            Destroy(prefab, 10);//temp
+        }
     }
 
     public void TowerAndCanonRotation(Vector3 eularAngle)
@@ -107,5 +133,16 @@ public class TankManager : MonoBehaviour
             tower.Rotate(new Vector3(0f, -towerRotationSpeed, 0f));
         }
         canon.rotation = Quaternion.Euler(canonRotate, tower.eulerAngles.y, transform.rotation.eulerAngles.z);
+    }
+
+    private void tankEngineSound()
+    {
+
+        float pitch = 1.0f * (rb.velocity.magnitude * 0.03f + 1.0f);
+        
+        if (pitch > enginePitchMax)
+            pitch = enginePitchMax;
+
+        engineSound.pitch = pitch;
     }
 }

@@ -489,8 +489,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491601898}
-  m_LocalRotation: {x: -0.15402137, y: 0.15549774, z: 0.024529912, w: 0.97544664}
-  m_LocalPosition: {x: 148.87088, y: 2.409604, z: 178.08652}
+  m_LocalRotation: {x: -0.15706457, y: 0.7738898, z: 0.21091494, w: 0.5761426}
+  m_LocalPosition: {x: 93.21621, y: -2.0337906, z: 161.59177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 649002627}
   - component: {fileID: 649002626}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BackGroundMusic
   m_TagString: BackGroundMusic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -627,14 +627,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 27ba7636d60d1c9468a0f2856bc3757d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.227
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -719,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649002625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.728828, y: -0.81088257, z: 14.18821}
+  m_LocalPosition: {x: 250, y: 0, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,7 +813,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 250, y: 50, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,7 +830,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
@@ -839,14 +838,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1080,8 +1071,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022976740}
-  m_LocalRotation: {x: 0.09782446, y: 0.7495331, z: 0.11375548, w: -0.64474046}
-  m_LocalPosition: {x: 152.13293, y: 1.8559933, z: 181.07637}
+  m_LocalRotation: {x: -0.019125763, y: 0.69166327, z: -0.018191695, w: -0.7217376}
+  m_LocalPosition: {x: 99.372475, y: 0.07917786, z: 161.1024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1252,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7268879248109299786, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7561097175505383651, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1349,7 +1344,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227039913}
-  m_LocalRotation: {x: -0.01768365, y: -0.052861065, z: -0.0009362326, w: 0.99844486}
+  m_LocalRotation: {x: -0.01768365, y: -0.0528611, z: -0.0009362332, w: 0.99844486}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2501,8 +2496,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008762157}
-  m_LocalRotation: {x: -0.14122806, y: 0.19667614, z: 0.028617673, w: 0.9698217}
-  m_LocalPosition: {x: 148.53893, y: 2.409583, z: 178.2073}
+  m_LocalRotation: {x: -0.15706457, y: 0.7738898, z: 0.21091494, w: 0.5761426}
+  m_LocalPosition: {x: 93.21621, y: -2.0337906, z: 161.59177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

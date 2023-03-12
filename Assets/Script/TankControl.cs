@@ -26,7 +26,10 @@ public class TankControl : MonoBehaviour
         tankManager.Move(verticalAxis, HorizontalAxis);
 
         //tower & canon rotation
-        tankManager.TowerAndCanonRotation(cam.eulerAngles);
+        if(!Input.GetMouseButton(1))
+        {
+            tankManager.TowerAndCanonRotation(cam.eulerAngles);
+        }
 
         //fire
         if (Input.GetMouseButtonDown(0))
