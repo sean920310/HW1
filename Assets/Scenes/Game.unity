@@ -242,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -650, y: -0.0000076294}
+  m_AnchoredPosition: {x: -650, y: 0}
   m_SizeDelta: {x: 1300, y: 724}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &102678797
@@ -811,6 +811,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3424187736911566459, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: RocketFiringSound
+      value: 
+      objectReference: {fileID: 2006410201}
+    - target: {fileID: 3424187736911566459, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: LandmineFiringSound
+      value: 
+      objectReference: {fileID: 2006410201}
     - target: {fileID: 3503318476722469206, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: m_Name
       value: TankFree_Red
@@ -1164,8 +1172,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491601898}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 247.17072, y: -142.83463, z: -309.33948}
+  m_LocalRotation: {x: -0.13088045, y: -0.1803636, z: 0.024222875, w: -0.9745525}
+  m_LocalPosition: {x: 149.45055, y: 3.06209, z: 178.51646}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1827,7 +1835,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1780572451}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3242,7 +3250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.12393481, y: 0, z: 0, w: 0.9922904}
-  m_LocalPosition: {x: 94.1, y: 11.511, z: 155}
+  m_LocalPosition: {x: 94.1, y: 10.63, z: 155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3578,8 +3586,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022976740}
-  m_LocalRotation: {x: -0.12393481, y: -0, z: -0, w: 0.9922904}
-  m_LocalPosition: {x: 94.1, y: -0.37099934, z: 155}
+  m_LocalRotation: {x: 0.083972655, y: -0.35503745, z: 0.03204043, w: 0.9305216}
+  m_LocalPosition: {x: 150.89247, y: 3.0621252, z: 178.51021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3687,17 +3695,33 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 35552841, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 292182493, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 292182498, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 399460420, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 399460425, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1032278934, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032278939, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1138096672, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: cam
@@ -3741,7 +3765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672221882971161554, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.511
+      value: 8.63
       objectReference: {fileID: 0}
     - target: {fileID: 672221882971161554, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3839,6 +3863,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 7207729588493695818, guid: 212d43e22e83ef14698444c9859bc074, type: 2}
+    - target: {fileID: 7504902094874086135, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7561097175505383651, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3846,6 +3874,30 @@ PrefabInstance:
     - target: {fileID: 7632753295435870251, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[0].WeaponName
+      value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[1].WeaponName
+      value: Landmine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[0].WeaponMaxNumber
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[1].WeaponMaxNumber
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[0].WeaponCoolDownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weapon.Array.data[1].WeaponCoolDownTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880972166715730378, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Enabled
@@ -5396,7 +5448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580491786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 94.1, y: 11.511, z: 155}
+  m_LocalPosition: {x: 94.1, y: 10.63, z: 155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6835,6 +6887,7 @@ GameObject:
   - component: {fileID: 1780572451}
   - component: {fileID: 1780572453}
   - component: {fileID: 1780572452}
+  - component: {fileID: 1780572454}
   m_Layer: 5
   m_Name: WeaponPanel
   m_TagString: Untagged
@@ -6854,8 +6907,8 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2026214490}
   - {fileID: 632166139}
+  - {fileID: 2026214490}
   - {fileID: 216857378}
   - {fileID: 102678796}
   m_Father: {fileID: 1048255791}
@@ -6904,6 +6957,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780572450}
   m_CullTransparentMesh: 1
+--- !u!114 &1780572454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780572450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7723bacc462bb6e448a2276e38945f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  twm: {fileID: 2006410209}
+  rocketIcon: {fileID: 632166138}
+  landmineIcon: {fileID: 2026214489}
+  weaponNumText: {fileID: 216857379}
+  numberBar: {fileID: 1913208168}
 --- !u!1 &1796600984
 GameObject:
   m_ObjectHideFlags: 0
@@ -7718,8 +7788,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971228582}
-  m_LocalRotation: {x: -0.12393481, y: -0, z: -0, w: 0.9922904}
-  m_LocalPosition: {x: 94.1, y: -0.37099934, z: 155}
+  m_LocalRotation: {x: 0.083972655, y: -0.35503745, z: 0.03204043, w: 0.9305216}
+  m_LocalPosition: {x: 150.89247, y: 3.0621252, z: 178.51021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7915,6 +7985,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593645547fff6a849b743eaf7ecc8719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &2006410201 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 585486629987149374, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+  m_PrefabInstance: {fileID: 1138096670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2006410209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+  m_PrefabInstance: {fileID: 1138096670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006410193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cc8f0f66fcc524ba1fca62e4a68596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2008762157
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,8 +8068,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008762157}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 247.17072, y: -142.83463, z: -309.33948}
+  m_LocalRotation: {x: -0.1379972, y: -0.23385316, z: 0.033551466, w: -0.96184397}
+  m_LocalPosition: {x: 149.16716, y: 3.0620823, z: 178.63922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8097,7 +8183,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1780572451}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

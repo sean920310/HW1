@@ -497,6 +497,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2690322618296481704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203595048368193326}
+  m_Layer: 0
+  m_Name: LandmineSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203595048368193326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690322618296481704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.398, z: -1.088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3011469963919986407}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2902709897703358072
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +657,7 @@ GameObject:
   - component: {fileID: 8418593001057148024}
   - component: {fileID: -8971032376051904823}
   - component: {fileID: 8517973972549097329}
+  - component: {fileID: 3424187736911566459}
   - component: {fileID: 6671920547570658810}
   - component: {fileID: 518486826151764492}
   - component: {fileID: 6060047694992603345}
@@ -658,6 +690,7 @@ Transform:
   - {fileID: 3190656941211580594}
   - {fileID: 491229084235118531}
   - {fileID: 5901726762851987813}
+  - {fileID: 1203595048368193326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -763,6 +796,39 @@ NavMeshAgent:
   m_BaseOffset: 1.1
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3424187736911566459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503318476722469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cc8f0f66fcc524ba1fca62e4a68596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponList:
+  - WeaponName: Rocket
+    WeaponNumber: 0
+    WeaponMaxNumber: 10
+    WeaponCoolDownTime: 1
+  - WeaponName: Landmine
+    WeaponNumber: 0
+    WeaponMaxNumber: 20
+    WeaponCoolDownTime: 1
+  rocketPrefab: {fileID: 7090710131271465290, guid: 4ba3c3891942f454eb589b120866bcb2, type: 3}
+  kaBoomPrefab: {fileID: 2541705999845557422, guid: e6757488ab4f34f4b9123ace7b2fc852, type: 3}
+  RocketFiringSound: {fileID: 0}
+  rocketCoolDown: 1
+  rocketFiringCounter: 0
+  rocketNumber: 50
+  rocketDamage: 10
+  landminePrefab: {fileID: 8314945414142991816, guid: fa3a79f5e30e50b439fc62d42f57bac4, type: 3}
+  LandmineFiringSound: {fileID: 0}
+  landmineCoolDown: 1
+  landmineFiringCounter: 0
+  landmineNumber: 10
 --- !u!114 &6671920547570658810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,13 +860,12 @@ MonoBehaviour:
   tower: {fileID: 2063947290855744239}
   canon: {fileID: 4083431937752462153}
   aimTo: {fileID: 7631247835438331557}
-  rocketPrefab: {fileID: 8362787410197010642, guid: 8e43e79820173224e85d2892bb5ee0fa, type: 3}
-  kaBoomPrefab: {fileID: 2541705999845557422, guid: e6757488ab4f34f4b9123ace7b2fc852, type: 3}
-  rocketCoolDown: 1
+  landmineSpot: {fileID: 1203595048368193326}
+  enemyTag: Player
   enginePitchMax: 2
   engineSound: {fileID: 6060047694992603345}
-  RocketFiringSound: {fileID: 2522431889549542687}
   health: 100
+  maxHealth: 100
 --- !u!114 &518486826151764492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +887,7 @@ MonoBehaviour:
   enemySightRadius: 30
   walkRange: 30
   attackRange: 25
+  sightFOV: 0
   idleTime: 2
   idleCounter: 0
   walkPoint: {x: 0, y: 0, z: 0}

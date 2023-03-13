@@ -7,6 +7,7 @@ public class TankControl : MonoBehaviour
     float verticalAxis, HorizontalAxis;
 
     TankManager tankManager;
+    TankWeaponManager twm;
 
     public Transform cam;
 
@@ -14,6 +15,7 @@ public class TankControl : MonoBehaviour
     void Start()
     {
         tankManager = transform.GetComponent<TankManager>();
+        twm = transform.GetComponent<TankWeaponManager>();
     }
 
     // Update is called once per frame
@@ -36,5 +38,16 @@ public class TankControl : MonoBehaviour
         {
             tankManager.Fire();
         }
+
+        if(Input.mouseScrollDelta.y > 0)
+        {
+            twm.changeWeapon(true);
+        }
+        else if(Input.mouseScrollDelta.y < 0)
+        {
+            twm.changeWeapon(false);
+        }
     }
+
+    
 }
