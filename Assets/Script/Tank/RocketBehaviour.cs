@@ -36,7 +36,7 @@ public class RocketBehaviour : MonoBehaviour
 
     private void rocketDestory()
     {
-        explosionAudio.Play();
+        explosion.Play();
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<MeshCollider>().enabled = false;
