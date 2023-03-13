@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class TankControl : MonoBehaviour
 {
@@ -11,10 +12,17 @@ public class TankControl : MonoBehaviour
 
     public Transform cam;
 
+    [SerializeField] CinemachineVirtualCamera firstPersonCam;
+    [SerializeField] CinemachineFreeLook thridPersonCam;
+
     // Start is called before the first frame update
     void Start()
     {
         tankManager = transform.GetComponent<TankManager>();
+        CamControl.RegisterFirstPerson(firstPersonCam);
+        CamControl.RegisterThridPerson(thridPersonCam);
+
+        CamControl.SwitchCamera(CamControl.Type.ThridPerson);
         twm = transform.GetComponent<TankWeaponManager>();
     }
 
@@ -25,10 +33,11 @@ public class TankControl : MonoBehaviour
         verticalAxis = Input.GetAxis("Vertical");
         HorizontalAxis = Input.GetAxis("Horizontal");
 
+
         tankManager.Move(verticalAxis, HorizontalAxis);
 
         //tower & canon rotation
-        if(!Input.GetMouseButton(1))
+        if(!Input.GetKey(KeyCode.LeftAlt))
         {
             tankManager.TowerAndCanonRotation(cam.eulerAngles);
         }
@@ -38,6 +47,13 @@ public class TankControl : MonoBehaviour
         {
             tankManager.Fire();
         }
+
+        //switch Cam between fps & tps
+        if (Input.GetMouseButtonDown(1))
+        {
+            CamControl.SwitchCamera();
+        }
+
 
         if(Input.mouseScrollDelta.y > 0)
         {
