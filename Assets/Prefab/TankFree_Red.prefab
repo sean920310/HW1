@@ -808,27 +808,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cc8f0f66fcc524ba1fca62e4a68596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponList:
-  - WeaponName: Rocket
-    WeaponNumber: 0
-    WeaponMaxNumber: 10
-    WeaponCoolDownTime: 1
-  - WeaponName: Landmine
-    WeaponNumber: 0
-    WeaponMaxNumber: 20
-    WeaponCoolDownTime: 1
+  gwm: {fileID: 0}
+  weaponStatusList:
+  - WeaponNumber: 10
+    WeaponCounter: 0
+  - WeaponNumber: 10
+    WeaponCounter: 0
   rocketPrefab: {fileID: 7090710131271465290, guid: 4ba3c3891942f454eb589b120866bcb2, type: 3}
   kaBoomPrefab: {fileID: 2541705999845557422, guid: e6757488ab4f34f4b9123ace7b2fc852, type: 3}
   RocketFiringSound: {fileID: 0}
-  rocketCoolDown: 1
-  rocketFiringCounter: 0
-  rocketNumber: 50
-  rocketDamage: 10
   landminePrefab: {fileID: 8314945414142991816, guid: fa3a79f5e30e50b439fc62d42f57bac4, type: 3}
   LandmineFiringSound: {fileID: 0}
-  landmineCoolDown: 1
-  landmineFiringCounter: 0
-  landmineNumber: 10
+  isAmmoInfinity: 1
+  haveReloadTime: 1
 --- !u!114 &6671920547570658810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,6 +849,7 @@ MonoBehaviour:
   RotSpeed: 2
   breakForce: 600
   towerRotationSpeed: 0.5
+  canonRotationSpeed: 0
   tower: {fileID: 2063947290855744239}
   canon: {fileID: 4083431937752462153}
   aimTo: {fileID: 7631247835438331557}

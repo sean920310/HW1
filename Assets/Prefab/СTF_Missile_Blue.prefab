@@ -4955,6 +4955,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1828176872806910, guid: 9a6314a3302853c40a8a2fae9ff17aeb, type: 3}
+  gwm: {fileID: 0}
+  IdxInGWM: 0
 --- !u!82 &7515652912876981127
 AudioSource:
   m_ObjectHideFlags: 0

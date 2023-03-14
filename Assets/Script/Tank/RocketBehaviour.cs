@@ -10,9 +10,11 @@ public class RocketBehaviour : MonoBehaviour
     private Rigidbody rb;
     private AudioSource explosionAudio;
 
+    public int IdxInGWM;
 
     void Start()
     {
+
         explosionAudio = GetComponent<AudioSource>();
         explosionAudio.spatialBlend = 1.0f;
         rb = GetComponent<Rigidbody>();
@@ -28,7 +30,7 @@ public class RocketBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<TankManager>().damage();
+            collision.gameObject.GetComponent<TankManager>().damage(GlobalWeaponManager.weaponList[IdxInGWM].damage);
         }
         Instantiate(explosionPrefab, gameObject.transform);
         rocketDestory();

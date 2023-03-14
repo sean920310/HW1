@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
-        DontDestroyOnLoad(audioObj);
+        if(audioObj != null )
+            DontDestroyOnLoad(audioObj);
     }
 
     private void Start()

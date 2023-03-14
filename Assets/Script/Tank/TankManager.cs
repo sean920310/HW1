@@ -35,6 +35,8 @@ public class TankManager : MonoBehaviour
     public AudioSource engineSound;
     private Rigidbody rb;
 
+    [SerializeField] AudioSource gunClickSound;
+
     [HeaderAttribute("Tank Game Parameter")]
     public float health;
     public float maxHealth = 100;
@@ -110,30 +112,41 @@ public class TankManager : MonoBehaviour
 
     public void Fire()
     {
-        if(twm.currentWeaponIdx == 0 && twm.rocketFiringCounter <= 0 && twm.currentWeaponNumber > 0)
+        if (twm.currentWeaponAvailable(1))
         {
-            twm.weaponList[twm.currentWeaponIdx].WeaponNumber--;
-            twm.RocketFiringSound.Play();
-            twm.rocketFiringCounter = twm.rocketCoolDown;
+            if (twm.curWeaponIdx == 0)
+            {
+                twm.currentWeaponFired(1);
 
-            Vector3 aimDir = aimTo.position - canon.position;
-            weaponPrefab = Instantiate(twm.rocketPrefab, aimTo.position, aimTo.rotation);
-            weaponPrefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
+                twm.RocketFiringSound.Play();
 
-            Instantiate(twm.kaBoomPrefab, aimTo.position, aimTo.rotation);
+                Vector3 aimDir = aimTo.position - canon.position;
+                weaponPrefab = Instantiate(twm.rocketPrefab, aimTo.position, aimTo.rotation);
+                weaponPrefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
 
-            Destroy(weaponPrefab, 10);//temp
+                Instantiate(twm.kaBoomPrefab, aimTo.position, aimTo.rotation);
 
-        }else if (twm.currentWeaponIdx == 1 && twm.landmineFiringCounter <= 0 && twm.currentWeaponNumber > 0)
+                Destroy(weaponPrefab, 10);//temp
+
+            }
+            else if (twm.curWeaponIdx == 1)
+            {
+                twm.currentWeaponFired(1);
+
+                //twm.LandmineFiringSound.Play();
+
+                weaponPrefab = Instantiate(twm.landminePrefab, landmineSpot.position, Quaternion.identity);
+
+                weaponPrefab.GetComponent<LandmineBehaviour>().enemyTag = enemyTag;
+                //Destroy(weaponPrefab, 10);//temp
+            }
+        }
+        else
         {
-            twm.weaponList[twm.currentWeaponIdx].WeaponNumber--;
-            twm.LandmineFiringSound.Play();
-            twm.landmineFiringCounter = twm.landmineCoolDown;
-
-            weaponPrefab = Instantiate(twm.landminePrefab, landmineSpot.position, Quaternion.identity);
-
-            weaponPrefab.GetComponent<LandmineBehaviour>().enemyTag = enemyTag;
-            //Destroy(weaponPrefab, 10);//temp
+            if (twm.isOutOfAmmo() && !twm.isReloading())
+            {
+                gunClickSound.Play();
+            }
         }
     }
 
@@ -171,9 +184,9 @@ public class TankManager : MonoBehaviour
         
     }
 
-    public void damage()
+    public void damage(float damageNumber)
     {
-        health -= twm.rocketDamage;
+        health -= damageNumber;
         if(health < 0) health = 0;
     }
 
