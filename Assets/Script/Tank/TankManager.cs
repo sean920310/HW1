@@ -12,7 +12,7 @@ public class TankManager : MonoBehaviour
     public WheelCollider[] rightWheelColliders;
     public WheelCollider[] leftWheelColliders;
 
-    public float Force, RotSpeed, breakForce, towerRotationSpeed;
+    public float Force, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
 
     Vector3 pos;
     Quaternion quat;
@@ -141,7 +141,13 @@ public class TankManager : MonoBehaviour
     {
         //tower & canon rotation
         towerRotate = eularAngle.y - tower.eulerAngles.y;
-        canonRotate = eularAngle.x;
+        canonRotate = eularAngle.x - canon.eulerAngles.x;
+
+        float canonTilte = canon.eulerAngles.x;
+        if (canonTilte > 180f) canonTilte -= 360f;
+
+        if (canonRotate > 180f) canonRotate -= 360f;
+        if (canonRotate < -180f) canonRotate += 360f;
 
         if (towerRotate > 180f) towerRotate -= 360f;
         if (towerRotate < -180f) towerRotate += 360f;
@@ -153,7 +159,16 @@ public class TankManager : MonoBehaviour
         {
             tower.Rotate(new Vector3(0f, -towerRotationSpeed, 0f));
         }
-        canon.rotation = Quaternion.Euler(canonRotate, tower.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+        if (canonRotate > 0.1f && canonTilte < 20f)
+        {
+            canon.Rotate(new Vector3(towerRotationSpeed,0f, 0f));
+        }
+        else if (canonRotate < -0.1f && canonTilte > -20f)
+        {
+            canon.Rotate(new Vector3(-towerRotationSpeed, 0f, 0f));
+        }
+        
     }
 
     public void damage()
