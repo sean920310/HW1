@@ -9,6 +9,9 @@ public class TankManager : MonoBehaviour
 
     public GameObject headLight;
 
+    public GameObject explosionPrefab;
+    public bool malfunction = false;
+
     public Transform[] rightWheelMeshs;
     public Transform[] leftWheelMeshs;
     public WheelCollider[] rightWheelColliders;
@@ -62,7 +65,7 @@ public class TankManager : MonoBehaviour
 
         WheelMeshUpdate();
         tankEngineSound();
-
+        tankInWaterDetect();
 
     }
     private void WheelMeshUpdate()
@@ -209,5 +212,11 @@ public class TankManager : MonoBehaviour
     public void headLightControl(bool enable)
     {
         headLight.SetActive(enable);
+    }
+
+    private void tankInWaterDetect()
+    { 
+        malfunction = transform.position.y <= 5.5f; //lower than water surface
+        
     }
 }

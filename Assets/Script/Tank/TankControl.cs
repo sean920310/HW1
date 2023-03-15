@@ -36,6 +36,13 @@ public class TankControl : MonoBehaviour
             return; 
         }
 
+        if(tankManager.malfunction)
+        {
+            CamControl.SwitchCamera(CamControl.Type.ThridPerson);
+            tankManager.Move(0, 0);
+            return;
+        }
+
         //wheelCollider move
         verticalAxis = Input.GetAxis("Vertical");
         HorizontalAxis = Input.GetAxis("Horizontal");
