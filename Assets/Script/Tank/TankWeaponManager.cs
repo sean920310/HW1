@@ -75,11 +75,13 @@ public class TankWeaponManager : MonoBehaviour
     }
     private void weaponUpdate()
     {
-        
+
         if (weaponStatusList[curWeaponIdx].WeaponNumber > GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber)
             weaponStatusList[curWeaponIdx].WeaponNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
+        else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
+            weaponStatusList[curWeaponIdx].WeaponNumber = 0;
 
-        _curWeaponMaxNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
+            _curWeaponMaxNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
         _curWeaponAmmoNumber = weaponStatusList[curWeaponIdx].WeaponNumber;
 
         _curWeaponCounter = weaponStatusList[curWeaponIdx].WeaponCounter;

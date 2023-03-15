@@ -17,7 +17,15 @@ public class GameStageManager : MonoBehaviour
 
     [ReadOnly]
     [SerializeField]
-    public bool stageAllClear = false;
+    private bool _stageAllClear = false;
+
+    public bool stageAllClear
+    {
+        get
+        {
+            return _stageAllClear;
+        }
+    }
 
     [SerializeField]
     private GameObject enemyPrefab;
@@ -34,23 +42,56 @@ public class GameStageManager : MonoBehaviour
 
     [ReadOnly]
     [SerializeField]
-    private bool isPreparing = true;
+    private bool _isPreparing = true;
+
+    public bool isPreparing
+    {
+        get
+        {
+            return _isPreparing;
+        }
+    }
 
     [ReadOnly]
     [SerializeField]
-    private int currentStage = 0;
+    private int _currentStage = 0;
+
+    public int currentStage
+    {
+        get
+        {
+            return _currentStage;
+        }
+    }
 
     [ReadOnly]
     [SerializeField]
-    private int currentEnemyCount = 0;
+    private int _currentEnemyCount = 0;
+
+    public int currentEnemyCount
+    {
+        get
+        {
+            return _currentEnemyCount;
+        }
+    }
 
     [ReadOnly]
     [SerializeField]
-    private int enemySpawnCount = 0;
+    private int _enemySpawnCount = 0;
+
+    public int enemySpawnCount
+    {
+        get
+        {
+            return _enemySpawnCount;
+        }
+    }
 
     [ReadOnly]
     [SerializeField]
     private float enemySpawnTime = 0;
+
 
     [ReadOnly]
     [SerializeField]
@@ -58,7 +99,15 @@ public class GameStageManager : MonoBehaviour
 
     [ReadOnly]
     [SerializeField]
-    private float StageTimeCounter = 0f;
+    private float _StageTimeCounter = 0f;
+
+    public float StageTimeCounter
+    {
+        get
+        {
+            return _StageTimeCounter;
+        }
+    }
 
     private GameObject tmpEnemy;
 
@@ -66,64 +115,67 @@ public class GameStageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StageTimeCounter = prepareTime;
+        _StageTimeCounter = prepareTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (stageAllClear)
+        if (_currentStage >= _stages.Length)
+        {
+            _stageAllClear = true;
+            return;
+        }
+
+        if (_stageAllClear)
             return;
 
-        StageTimeCounter -= Time.deltaTime;
+        _StageTimeCounter -= Time.deltaTime;
 
-        if (isPreparing)
+        _currentEnemyCount = enemyList.transform.childCount;
+
+        if (_isPreparing)
         {
-            if (StageTimeCounter <= 0f)
+            if (_StageTimeCounter <= 0f)
             {
-                isPreparing = false;
+                _isPreparing = false;
 
                 // stage start
-                enemySpawnCount = _stages[currentStage].EnemyCount;
+                _enemySpawnCount = _stages[_currentStage].EnemyCount;
                 spawnTimeAssign();
             }
         }
-        else
+        else if (_currentStage < _stages.Length)
         {
-            // stage in progress
-            if (enemySpawnCount > 0 && enemySpawnCounter <= 0f)
+            if (enemyList.transform.childCount == 0 && _enemySpawnCount == 0)
             {
-                spawnEnemy();
-            }
-
-            if (enemyList.transform.childCount == 0 && enemySpawnCount == 0)
-            {
-                if(currentStage == _stages.Length)
-                {
-                    stageAllClear = true;
-                }
-
-                enemySpawnCount = _stages[currentStage].EnemyCount;
+                // current stage clear
+                _enemySpawnCount = _stages[_currentStage].EnemyCount;
                 spawnTimeAssign();
-                currentStage++;
+                _currentStage++;
 
-                StageTimeCounter = prepareTime;
-                isPreparing = true;
+                _StageTimeCounter = prepareTime;
+                _isPreparing = true;
+            }
+            else if (_enemySpawnCount > 0 && enemySpawnCounter <= 0f)
+            {
+                // stage in progress
+                spawnEnemy();
             }
         }
     }
 
     private void spawnEnemy() {
 
-        GameObject prefab = Instantiate(enemyPrefab, _stages[currentStage].SpawnPoint.position, Quaternion.identity);
+        GameObject prefab = Instantiate(enemyPrefab, _stages[_currentStage].SpawnPoint.position, Quaternion.identity);
         prefab.transform.parent = enemyList.transform;
         prefab.SetActive(true);
-        enemySpawnCount--;
+        _enemySpawnCount--;
     }
 
     private void spawnTimeAssign()
     {
-        enemySpawnTime = UnityEngine.Random.Range(_stages[currentStage].SpawnMinTime, _stages[currentStage].SpawnMaxTime);
-        StageTimeCounter = enemySpawnTime;
+        enemySpawnTime = UnityEngine.Random.Range(_stages[_currentStage].SpawnMinTime, _stages[_currentStage].SpawnMaxTime);
+        _StageTimeCounter = enemySpawnTime;
     }
 }
