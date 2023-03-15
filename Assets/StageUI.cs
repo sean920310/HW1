@@ -44,7 +44,7 @@ public class StageUI : MonoBehaviour
         {
             timeIcon.SetActive(false);
             skullIcon.SetActive(true);
-            stageText.text = "Stage: " + gsm.currentEnemyCount.ToString();
+            stageText.text = "Stage: " + gsm.currentStage.ToString();
             enemyRemaining.text = (gsm.enemySpawnCount + gsm.currentEnemyCount).ToString();
         }
 

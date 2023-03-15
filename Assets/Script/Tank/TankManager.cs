@@ -165,11 +165,11 @@ public class TankManager : MonoBehaviour
 
         if (towerRotate > 180f) towerRotate -= 360f;
         if (towerRotate < -180f) towerRotate += 360f;
-        if (towerRotate > 0.5f)
+        if (towerRotate > 0.4f)
         {
             tower.Rotate(new Vector3(0f, towerRotationSpeed, 0f));
         }
-        else if (towerRotate < -0.5f)
+        else if (towerRotate < -0.4f)
         {
             tower.Rotate(new Vector3(0f, -towerRotationSpeed, 0f));
         }
