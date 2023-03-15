@@ -55,10 +55,6 @@ public class TimeController : MonoBehaviour
 
     [ReadOnly]
     [SerializeField]
-    float moonRotation = 0.0f;
-
-    [ReadOnly]
-    [SerializeField]
     float atmos = 0.0f;
 
 

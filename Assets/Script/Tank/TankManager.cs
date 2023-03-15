@@ -122,6 +122,7 @@ public class TankManager : MonoBehaviour
 
                 Vector3 aimDir = aimTo.position - canon.position;
                 weaponPrefab = Instantiate(twm.rocketPrefab, aimTo.position, aimTo.rotation);
+                weaponPrefab.SetActive(true);
                 weaponPrefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
 
                 Instantiate(twm.kaBoomPrefab, aimTo.position, aimTo.rotation);
@@ -136,7 +137,7 @@ public class TankManager : MonoBehaviour
                 //twm.LandmineFiringSound.Play();
 
                 weaponPrefab = Instantiate(twm.landminePrefab, landmineSpot.position, Quaternion.identity);
-
+                weaponPrefab.SetActive(true);
                 weaponPrefab.GetComponent<LandmineBehaviour>().enemyTag = enemyTag;
                 //Destroy(weaponPrefab, 10);//temp
             }

@@ -16,10 +16,6 @@ public class GameManager : MonoBehaviour
 
     private float dieCounter = 0.0f;
 
-    [ReadOnly]
-    [SerializeField]
-    private bool dying = false;
-
     private void Awake()
     {
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
@@ -51,12 +47,10 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.E))
         {
-            dying = true;
             dieCounter += Time.deltaTime;
         }
         else
         {
-            dying = false;
             dieCounter = 0.0f;
         }
 
