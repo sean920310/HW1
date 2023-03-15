@@ -9,15 +9,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject player;
     private TankManager playerTM;
+    private GameStageManager gsm;
 
     public GameObject gameoverMenuUI;
     public TextMeshProUGUI gameoverMessage;
 
     private float dieCounter = 0.0f;
-
-    [ReadOnly]
-    [SerializeField]
-    private bool dying = false;
 
     private void Awake()
     {
@@ -29,13 +26,20 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         playerTM = player.GetComponent<TankManager>();
 
+        gsm = GetComponent<GameStageManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gsm.stageAllClear)
+        {
+            win();
+        }
         if(playerTM.health == 0) // gameover
         {
             lose();
@@ -43,12 +47,10 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.E))
         {
-            dying = true;
             dieCounter += Time.deltaTime;
         }
         else
         {
-            dying = false;
             dieCounter = 0.0f;
         }
 
@@ -64,9 +66,23 @@ public class GameManager : MonoBehaviour
         bgm.GetComponent<AudioSource>().Pause();
 
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
 
         gameoverMenuUI.SetActive(true);
         gameoverMessage.text = "You Lose, Bye.";
+        Time.timeScale = 0.0f;
+
+    }
+    private void win()
+    {
+        GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
+        bgm.GetComponent<AudioSource>().Pause();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        gameoverMenuUI.SetActive(true);
+        gameoverMessage.text = "You Win!";
         Time.timeScale = 0.0f;
 
     }

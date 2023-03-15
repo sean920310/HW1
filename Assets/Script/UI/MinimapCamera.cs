@@ -18,11 +18,32 @@ public class MinimapCamera : MonoBehaviour
         transform.position += Vector3.up * 25f;
 
         transform.rotation = Quaternion.Euler(90f, player.rotation.eulerAngles.y, 0f);
+
+        if (Input.GetKey(KeyCode.Equals)){
+            mapSizeScaleUp();
+        }
+        if (Input.GetKey(KeyCode.Minus)) { 
+            mapSizeScaleDown(); 
+        }
+
     }
 
     public void mapSizeChange(float value)
     {
-        value = 10f + 90f * value;
+        Mathf.Clamp(value, 0f, 1f);
+        Mathf.Lerp(value, 10f, 90f);
         GetComponent<Camera>().orthographicSize = value;
+    }
+    public void mapSizeScaleUp()
+    {
+        float scale = GetComponent<Camera>().orthographicSize;
+        scale += Time.deltaTime * 10;
+        GetComponent<Camera>().orthographicSize = Mathf.Clamp(scale, 10f, 90f);
+    }
+    public void mapSizeScaleDown()
+    {
+        float scale = GetComponent<Camera>().orthographicSize;
+        scale -= Time.deltaTime * 10;
+        GetComponent<Camera>().orthographicSize = Mathf.Clamp(scale, 10f, 90f);
     }
 }

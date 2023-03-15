@@ -29,6 +29,11 @@ public class TankControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0.0f)
+        { 
+            return; 
+        }
+
         //wheelCollider move
         verticalAxis = Input.GetAxis("Vertical");
         HorizontalAxis = Input.GetAxis("Horizontal");
@@ -57,11 +62,11 @@ public class TankControl : MonoBehaviour
 
         if(Input.mouseScrollDelta.y > 0)
         {
-            twm.changeWeapon(true);
+            twm.addWeaponNumber(true);
         }
         else if(Input.mouseScrollDelta.y < 0)
         {
-            twm.changeWeapon(false);
+            twm.addWeaponNumber(false);
         }
     }
 

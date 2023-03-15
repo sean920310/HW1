@@ -5,7 +5,6 @@ using System.Diagnostics;
 using TMPro;
 using TMPro.SpriteAssetUtilities;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 // reference: https://www.youtube.com/watch?v=L4t2c1_Szdk&ab_channel=KetraGames
 
@@ -56,10 +55,6 @@ public class TimeController : MonoBehaviour
 
     [ReadOnly]
     [SerializeField]
-    float moonRotation = 0.0f;
-
-    [ReadOnly]
-    [SerializeField]
     float atmos = 0.0f;
 
 
@@ -77,7 +72,9 @@ public class TimeController : MonoBehaviour
         sunsetTime = TimeSpan.FromHours(sunsetTimeHours);
 
         currentTime = currentTime.AddSeconds( Time.deltaTime * timeMutiplier );
-        timeText.text = currentTime.ToString("HH:mm");
+
+        if(timeText!= null )
+            timeText.text = currentTime.ToString("HH:mm");
 
         currentTimeHours = currentTime.Hour;
 

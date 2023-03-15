@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class LandmineBehaviour : MonoBehaviour
 {
 
-    private AudioSource explosion;
+    private bool exploded = false;
 
     public float radius;
     public string enemyTag;
@@ -14,21 +13,66 @@ public class LandmineBehaviour : MonoBehaviour
     public float aliveTime;
     private float aliveCounter;
 
+    public GameObject explosionPrefab;
+
+    public int IdxInGWM;
+
+    private float beepSoundCounter;
+    [SerializeField]
+    private float beepSoundMaxTime;
+    [SerializeField]
+    private float beepSoundMinTime;
+    [SerializeField]
+    private AnimationCurve beepSoundCurve;
+
+    [SerializeField]
+    private GameObject redLight;
+    [SerializeField]
+    private float redLightBlinkTime;
+    private float lightBlinkCounter;
+
+    [HeaderAttribute("Audio")]
+    public AudioSource explosionAudio;
+    public AudioSource onGroundAudio;
+    public AudioSource beepSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        explosion = GetComponent<AudioSource>();
-        explosion.spatialBlend = 1.0f;
+        explosionAudio.spatialBlend = 1.0f;
+        onGroundAudio.spatialBlend = 1.0f;
+        beepSound.spatialBlend = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        aliveCounter += Time.deltaTime;
-        if (aliveCounter > aliveTime)
-            Explosion();
+        if (!exploded)
+        {
 
-        ExplosionDetection();
+            aliveCounter += Time.deltaTime;
+            if (aliveCounter > aliveTime)
+            {
+                Instantiate(explosionPrefab, gameObject.transform);
+                Explosion();
+            }
+
+            beep();
+
+            lightBlinkCounter += Time.deltaTime;
+            if (lightBlinkCounter > redLightBlinkTime)
+            {
+                redLight.SetActive(false);
+            }
+            else
+            {
+                redLight.SetActive(true);
+            }
+
+            ExplosionDetection();
+        }
+        else
+            redLight.SetActive(false);
     }
     void ExplosionDetection()
     {
@@ -37,7 +81,8 @@ public class LandmineBehaviour : MonoBehaviour
         {
             if (hitCollider.CompareTag(enemyTag))
             {
-                hitCollider.gameObject.GetComponent<TankManager>().damage();
+                hitCollider.gameObject.GetComponent<TankManager>().damage(GlobalWeaponManager.weaponList[IdxInGWM].damage);
+                Instantiate(explosionPrefab, gameObject.transform);
                 Explosion();
                 break;
             }
@@ -46,10 +91,29 @@ public class LandmineBehaviour : MonoBehaviour
 
     void Explosion()
     {
-        explosion.Play();
+        exploded = true;
+        explosionAudio.Play();
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<MeshCollider>().enabled = false;
-        Destroy(gameObject, explosion.clip.length);
+        Destroy(gameObject, explosionAudio.clip.length);
+    }
+    void beep()
+    {
+        beepSoundCounter += Time.deltaTime;
+        float beepSoundTime = Mathf.Lerp(beepSoundMaxTime, beepSoundMinTime, beepSoundCurve.Evaluate(aliveCounter / aliveTime));
+        if(beepSoundCounter >= beepSoundTime)
+        {
+            lightBlinkCounter = 0;
+            beepSoundCounter = 0f;
+            beepSound.Play();
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            onGroundAudio.Play();
+        }
     }
 }

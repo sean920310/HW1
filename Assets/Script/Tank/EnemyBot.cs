@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.Jobs;
 
 /* reference: https://www.youtube.com/watch?v=UjkSFoLxesw&ab_channel=Dave%2FGameDevelopment*/
 
@@ -67,6 +66,9 @@ public class EnemyBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(tankManager.health <= 0f)
+            Destroy(gameObject);
+
         // angle between player and enemy
         playerDir = (player.transform.position - transform.position).normalized;
         playerDirEular = Quaternion.LookRotation(playerDir, Vector3.up).eulerAngles;
