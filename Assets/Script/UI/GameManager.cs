@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject player;
     private TankManager playerTM;
+    private GameStageManager gsm;
 
     public GameObject gameoverMenuUI;
     public TextMeshProUGUI gameoverMessage;
@@ -29,13 +30,20 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         playerTM = player.GetComponent<TankManager>();
 
+        gsm = GetComponent<GameStageManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gsm.stageAllClear)
+        {
+            win();
+        }
         if(playerTM.health == 0) // gameover
         {
             lose();
@@ -64,9 +72,23 @@ public class GameManager : MonoBehaviour
         bgm.GetComponent<AudioSource>().Pause();
 
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
 
         gameoverMenuUI.SetActive(true);
         gameoverMessage.text = "You Lose, Bye.";
+        Time.timeScale = 0.0f;
+
+    }
+    private void win()
+    {
+        GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
+        bgm.GetComponent<AudioSource>().Pause();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        gameoverMenuUI.SetActive(true);
+        gameoverMessage.text = "You Win!";
         Time.timeScale = 0.0f;
 
     }
