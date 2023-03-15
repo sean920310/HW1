@@ -157,30 +157,31 @@ public class TankManager : MonoBehaviour
         towerRotate = eularAngle.y - tower.eulerAngles.y;
         canonRotate = eularAngle.x - canon.eulerAngles.x;
 
-        float canonTilte = canon.eulerAngles.x;
+        float canonTilte = canon.localEulerAngles.x;
         if (canonTilte > 180f) canonTilte -= 360f;
+
 
         if (canonRotate > 180f) canonRotate -= 360f;
         if (canonRotate < -180f) canonRotate += 360f;
 
         if (towerRotate > 180f) towerRotate -= 360f;
         if (towerRotate < -180f) towerRotate += 360f;
-        if (towerRotate > 0.5f)
+        if (towerRotate > 0.1f)
         {
-            tower.Rotate(new Vector3(0f, towerRotationSpeed, 0f));
+            tower.Rotate(new Vector3(0f, towerRotationSpeed * Time.deltaTime, 0f));
         }
-        else if (towerRotate < -0.5f)
+        else if (towerRotate < -0.1f)
         {
-            tower.Rotate(new Vector3(0f, -towerRotationSpeed, 0f));
+            tower.Rotate(new Vector3(0f, -towerRotationSpeed * Time.deltaTime, 0f));
         }
 
         if (canonRotate > 0.1f && canonTilte < 20f)
         {
-            canon.Rotate(new Vector3(towerRotationSpeed,0f, 0f));
+            canon.Rotate(new Vector3(towerRotationSpeed * Time.deltaTime, 0f, 0f));
         }
         else if (canonRotate < -0.1f && canonTilte > -20f)
         {
-            canon.Rotate(new Vector3(-towerRotationSpeed, 0f, 0f));
+            canon.Rotate(new Vector3(-towerRotationSpeed * Time.deltaTime, 0f, 0f));
         }
         
     }
