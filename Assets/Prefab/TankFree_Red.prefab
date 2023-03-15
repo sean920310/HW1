@@ -907,15 +907,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStatusList:
-  - WeaponNumber: 10
+  - WeaponNumber: 20
     WeaponCounter: 0
   - WeaponNumber: 10
     WeaponCounter: 0
   rocketPrefab: {fileID: 7090710131271465290, guid: 4ba3c3891942f454eb589b120866bcb2, type: 3}
   kaBoomPrefab: {fileID: 2541705999845557422, guid: e6757488ab4f34f4b9123ace7b2fc852, type: 3}
-  RocketFiringSound: {fileID: 0}
+  RocketFiringSound: {fileID: 2522431889549542687}
   landminePrefab: {fileID: 8314945414142991816, guid: fa3a79f5e30e50b439fc62d42f57bac4, type: 3}
-  LandmineFiringSound: {fileID: 0}
+  LandmineFiringSound: {fileID: 2522431889549542687}
   isAmmoInfinity: 1
   haveReloadTime: 1
 --- !u!114 &6671920547570658810
