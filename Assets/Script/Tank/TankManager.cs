@@ -7,6 +7,8 @@ public class TankManager : MonoBehaviour
 {
     private TankWeaponManager twm;
 
+    public GameObject headLight;
+
     public Transform[] rightWheelMeshs;
     public Transform[] leftWheelMeshs;
     public WheelCollider[] rightWheelColliders;
@@ -202,5 +204,10 @@ public class TankManager : MonoBehaviour
             pitch = enginePitchMax;
 
         engineSound.pitch = pitch;
+    }
+
+    public void headLightControl(bool enable)
+    {
+        headLight.SetActive(enable);
     }
 }
