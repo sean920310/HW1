@@ -7,6 +7,8 @@ public class TankControl : MonoBehaviour
 {
     float verticalAxis, HorizontalAxis;
 
+    private bool headLightOpen = false;
+
     TankManager tankManager;
     TankWeaponManager twm;
 
@@ -32,6 +34,13 @@ public class TankControl : MonoBehaviour
         if(Time.timeScale == 0.0f)
         { 
             return; 
+        }
+
+        if(tankManager.malfunction)
+        {
+            CamControl.SwitchCamera(CamControl.Type.ThridPerson);
+            tankManager.Move(0, 0);
+            return;
         }
 
         //wheelCollider move
@@ -67,6 +76,13 @@ public class TankControl : MonoBehaviour
         else if(Input.mouseScrollDelta.y < 0)
         {
             twm.addWeaponNumber(false);
+        }
+
+        //HeadLight switch
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            headLightOpen = !headLightOpen;
+            tankManager.headLightControl(headLightOpen);
         }
     }
 
