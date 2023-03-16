@@ -23,48 +23,12 @@ public struct SkillSlot
     }
 }
 
-[Serializable]
-public class Skill
-{
-    public int currentSkillLV;
-    public SkillSlot[] skillSlot;
-
-    public bool chooseSkill(int level, ref int skillPoint)
-    {
-
-        if(level == currentSkillLV + 1 && skillSlot[currentSkillLV].requireSkillPoint <= skillPoint)
-        {
-            skillPoint -= skillSlot[currentSkillLV].requireSkillPoint;
-
-            if(skillSlot[currentSkillLV].skillButton != null) { 
-                skillSlot[currentSkillLV].skillButton.interactable = false;
-            }
-
-            if (skillSlot[currentSkillLV].Line != null)
-            {
-                skillSlot[currentSkillLV].Line.color = Color.white;
-            }
-            currentSkillLV++;
-            return true;
-        }
-        return false;
-    }
-
-    public float getValueAfterCalc(float value)
-    {
-        if(currentSkillLV <= 0)
-        {
-            return value;
-        }
-
-        return skillSlot[currentSkillLV-1].getValueAfterCalc(value);
-    }
-}
-
 public class SkillManager : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    [SerializeField] AudioSource SkillChooseAudio;
+    [SerializeField] AudioSource SkillPointNotEnoughAudio;
+
     [Serializable]
     public struct Level
     {
@@ -74,6 +38,72 @@ public class SkillManager : MonoBehaviour
 
     [SerializeField]
     private Level[] levelList;
+
+
+    [Serializable]
+    public class Skill
+    {
+        public int currentSkillLV;
+        public SkillSlot[] skillSlot;
+
+        public bool chooseSkill(int level, ref int skillPoint)
+        {
+
+            if (level == currentSkillLV + 1 && skillSlot[currentSkillLV].requireSkillPoint <= skillPoint)
+            {
+                skillPoint -= skillSlot[currentSkillLV].requireSkillPoint;
+
+                if (skillSlot[currentSkillLV].skillButton != null)
+                {
+                    skillSlot[currentSkillLV].skillButton.interactable = false;
+                }
+
+                if (skillSlot[currentSkillLV].Line != null)
+                {
+                    skillSlot[currentSkillLV].Line.color = Color.white;
+                }
+                currentSkillLV++;
+
+                return true;
+            }
+            return false;
+        }
+
+        public float getValueAfterCalc(float value)
+        {
+            if (currentSkillLV <= 0)
+            {
+                return value;
+            }
+
+            return skillSlot[currentSkillLV - 1].getValueAfterCalc(value);
+        }
+    }
+
+    [Header("Rocket")]
+    [SerializeField]
+    public Skill RocketMagazineSize; // RMS
+    [SerializeField]
+    public Skill RocketAttackPoint; // RAP
+    [SerializeField]
+    public Skill RocketReloadTime; // RRT
+
+    [Header("Landmine")]
+    [SerializeField]
+    public Skill LandmineMagazineSize; // LMS
+    [SerializeField]
+    public Skill LandmineAttackPoint;// LAP
+    [SerializeField]
+    public Skill LandmineRange; // LR
+
+    [Header("Tank Ability")]
+    [SerializeField]
+    public Skill TankHealth; // TH
+    [SerializeField]
+    public Skill TankRegeneration; // TR
+    [SerializeField]
+    public Skill TankTowerRotation; // TTR
+
 
     [SerializeField]
     [ReadOnly]
@@ -107,30 +137,6 @@ public class SkillManager : MonoBehaviour
         get { return _currentSkillPoint; }
     }
 
-    [Header("Rocket")]
-    [SerializeField]
-    public Skill RocketMagazineSize; // RMS
-    [SerializeField]
-    public Skill RocketAttackPoint; // RAP
-    [SerializeField]
-    public Skill RocketReloadTime; // RRT
-
-    [Header("Landmine")]
-    [SerializeField]
-    public Skill LandmineMagazineSize; // LMS
-    [SerializeField]
-    public Skill LandmineAttackPoint;// LAP
-    [SerializeField]
-    public Skill LandmineRange; // LR
-
-    [Header("Tank Ability")]
-    [SerializeField]
-    public Skill TankHealth; // TH
-    [SerializeField]
-    public Skill TankRegeneration; // TR
-    [SerializeField]
-    public Skill TankTowerRotation; // TTR
-
     void Start()
     {
         _currentSkillPoint += levelList[_currentLevel].skillPointCanGet;
@@ -146,14 +152,18 @@ public class SkillManager : MonoBehaviour
     {
         _currentExp = _currentExp + value;
 
+
         if(_currentExp <= 0f)
         {
             _currentExp = 0f;
 
         }else if (_currentExp >= _currentExpForNextLevel)
         {
-            _currentExp = 0f;
-            levelUp();
+            while (_currentExp >= _currentExpForNextLevel)
+            {
+                _currentExp = _currentExp - _currentExpForNextLevel;
+                levelUp();
+            }
         }
     }
 
@@ -177,37 +187,48 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
+        bool isSuccess = false;
+
         switch (skillCommand[0])
         {
             case "RMS":
-                RocketMagazineSize.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = RocketMagazineSize.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "RAP":
-                RocketAttackPoint.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = RocketAttackPoint.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "RRT":
-                RocketReloadTime.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = RocketReloadTime.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
 
             case "LMS":
-                LandmineMagazineSize.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = LandmineMagazineSize.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "LAP":
-                LandmineAttackPoint.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = LandmineAttackPoint.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "LR":
-                LandmineRange.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = LandmineRange.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
 
             case "TH":
-                TankHealth.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = TankHealth.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "TR":
-                TankRegeneration.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = TankRegeneration.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
             case "TTR":
-                TankTowerRotation.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
+                isSuccess = TankTowerRotation.chooseSkill(Int32.Parse(skillCommand[1]), ref _currentSkillPoint);
                 break;
+        }
+        if(isSuccess)
+        {
+
+            SkillChooseAudio.Play();
+        }
+        else
+        {
+            SkillPointNotEnoughAudio.Play();
         }
     }
 

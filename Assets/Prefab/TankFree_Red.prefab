@@ -1024,7 +1024,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.74
-  m_Speed: 3
+  m_Speed: 2.2
   m_Acceleration: 8
   avoidancePriority: 0
   m_AngularSpeed: 120
@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cc8f0f66fcc524ba1fca62e4a68596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   weaponStatusList:
   - WeaponNumber: 20
     WeaponCounter: 0
@@ -1072,6 +1073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593645547fff6a849b743eaf7ecc8719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillManager: {fileID: 0}
+  headLight: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  malfunctionEffect: {fileID: 0}
+  malfunction: 0
   rightWheelMeshs:
   - {fileID: 9177045630194580144}
   - {fileID: 301532880387059874}
@@ -1089,6 +1095,8 @@ MonoBehaviour:
   breakForce: 600
   towerRotationSpeed: 0.5
   canonRotationSpeed: 0
+  originTowerRotationSpeed: 0
+  originCanonRotationSpeed: 0
   tower: {fileID: 2063947290855744239}
   canon: {fileID: 4083431937752462153}
   aimTo: {fileID: 7631247835438331557}
@@ -1099,6 +1107,7 @@ MonoBehaviour:
   gunClickSound: {fileID: 5333718913247482123}
   health: 100
   maxHealth: 100
+  originMaxHealth: 100
 --- !u!114 &518486826151764492
 MonoBehaviour:
   m_ObjectHideFlags: 0
