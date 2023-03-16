@@ -8,6 +8,7 @@ public class LandmineBehaviour : MonoBehaviour
     private bool exploded = false;
 
     public float radius;
+    public float damage;
     public string enemyTag;
 
     public float aliveTime;
@@ -81,7 +82,7 @@ public class LandmineBehaviour : MonoBehaviour
         {
             if (hitCollider.CompareTag(enemyTag))
             {
-                hitCollider.gameObject.GetComponent<TankManager>().damage(GlobalWeaponManager.weaponList[IdxInGWM].damage);
+                hitCollider.gameObject.GetComponent<TankManager>().damage(damage);
                 Instantiate(explosionPrefab, gameObject.transform);
                 Explosion();
                 break;

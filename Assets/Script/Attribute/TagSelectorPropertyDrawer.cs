@@ -8,8 +8,6 @@ using UnityEngine;
 //Altered by Brecht Lecluyse https://www.brechtos.com
 
 
-#if UNITY_EDITOR
-
 [CustomPropertyDrawer(typeof(TagSelectorAttribute))]
 public class TagSelectorPropertyDrawer : PropertyDrawer
 {
@@ -78,4 +76,3 @@ public class TagSelectorPropertyDrawer : PropertyDrawer
         }
     }
 }
-#endif

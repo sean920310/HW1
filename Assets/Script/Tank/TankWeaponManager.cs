@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TankWeaponManager : MonoBehaviour
 {
+    [SerializeField]
+    private SkillManager sm;
 
     [Serializable]
     public struct WeaponStatus
@@ -63,6 +65,7 @@ public class TankWeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         RocketFiringSound.spatialBlend = 1.0f;
         LandmineFiringSound.spatialBlend = 1.0f;
     }
@@ -76,16 +79,39 @@ public class TankWeaponManager : MonoBehaviour
     private void weaponUpdate()
     {
 
-        if (weaponStatusList[curWeaponIdx].WeaponNumber > GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber)
-            weaponStatusList[curWeaponIdx].WeaponNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
-        else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
-            weaponStatusList[curWeaponIdx].WeaponNumber = 0;
+        if(sm != null)
+        {
+            if (weaponStatusList[curWeaponIdx].WeaponNumber > GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber)
+                weaponStatusList[curWeaponIdx].WeaponNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
+            else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
+                weaponStatusList[curWeaponIdx].WeaponNumber = 0;
 
+            if (curWeaponIdx == 0) // rocket
+            {
+                _curWeaponMaxNumber = (int)sm.RocketMagazineSize.getValueAfterCalc((int)GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber);
+            }
+            else if (curWeaponIdx == 1) // landmine
+            {
+                _curWeaponMaxNumber = (int)sm.LandmineMagazineSize.getValueAfterCalc((int)GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber);
+            }
+
+
+            if (curWeaponIdx == 0) // rocket
+            {
+                _curWeaponCD = sm.RocketReloadTime.getValueAfterCalc(GlobalWeaponManager.weaponList[curWeaponIdx].coolDownTime);
+            }
+            else
+            {
+                _curWeaponCD = GlobalWeaponManager.weaponList[curWeaponIdx].coolDownTime;
+            }
+        }
+        else
+        {
             _curWeaponMaxNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
+            _curWeaponCD = GlobalWeaponManager.weaponList[curWeaponIdx].coolDownTime;
+        }
         _curWeaponAmmoNumber = weaponStatusList[curWeaponIdx].WeaponNumber;
-
         _curWeaponCounter = weaponStatusList[curWeaponIdx].WeaponCounter;
-        _curWeaponCD = GlobalWeaponManager.weaponList[curWeaponIdx].coolDownTime;
     }
 
     private void weaponCDUpdate()

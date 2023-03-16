@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TankManager : MonoBehaviour
 {
+    [SerializeField]
+    private SkillManager skillManager;
+
     private TankWeaponManager twm;
 
     public Transform[] rightWheelMeshs;
@@ -13,6 +16,9 @@ public class TankManager : MonoBehaviour
     public WheelCollider[] leftWheelColliders;
 
     public float Force, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
+
+    public float originTowerRotationSpeed;
+    public float originCanonRotationSpeed;
 
     Vector3 pos;
     Quaternion quat;
@@ -40,6 +46,10 @@ public class TankManager : MonoBehaviour
     [HeaderAttribute("Tank Game Parameter")]
     public float health;
     public float maxHealth = 100;
+    public float originMaxHealth = 100;
+
+    private float regenerationCounter;
+    private float regenerationTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,15 +62,40 @@ public class TankManager : MonoBehaviour
         rb.centerOfMass = new Vector3(0, -0.2f, 0);
 
         engineBreakForce = breakForce / 2f;
+
+        originMaxHealth = maxHealth;
+        originTowerRotationSpeed = towerRotationSpeed;
+        originCanonRotationSpeed = canonRotationSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (skillManager != null)
+        {
+            regenerationCounter += Time.deltaTime;
+            if (regenerationCounter > regenerationTime)
+            {
+                health += skillManager.TankRegeneration.getValueAfterCalc(0);
+                regenerationCounter = 0f;
+            }
+            maxHealth = skillManager.TankHealth.getValueAfterCalc(originMaxHealth);
+            towerRotationSpeed = skillManager.TankTowerRotation.getValueAfterCalc(originTowerRotationSpeed);
+            canonRotationSpeed = skillManager.TankTowerRotation.getValueAfterCalc(originCanonRotationSpeed);
+        }
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }else if (health < 0f)
+        {
+            health = 0;
+        }
+
+
         WheelMeshUpdate();
         tankEngineSound();
-
 
     }
     private void WheelMeshUpdate()
@@ -125,6 +160,11 @@ public class TankManager : MonoBehaviour
                 weaponPrefab.SetActive(true);
                 weaponPrefab.GetComponent<Rigidbody>().AddForce(aimDir * 15000f);
 
+                if(skillManager == null)
+                    weaponPrefab.GetComponent<RocketBehaviour>().damage = GlobalWeaponManager.weaponList[0].damage;
+                else
+                    weaponPrefab.GetComponent<RocketBehaviour>().damage = skillManager.RocketAttackPoint.getValueAfterCalc(GlobalWeaponManager.weaponList[0].damage);
+                
                 Instantiate(twm.kaBoomPrefab, aimTo.position, aimTo.rotation);
 
                 Destroy(weaponPrefab, 10);//temp
@@ -139,6 +179,16 @@ public class TankManager : MonoBehaviour
                 weaponPrefab = Instantiate(twm.landminePrefab, landmineSpot.position, Quaternion.identity);
                 weaponPrefab.SetActive(true);
                 weaponPrefab.GetComponent<LandmineBehaviour>().enemyTag = enemyTag;
+                if (skillManager == null)
+                {
+                    weaponPrefab.GetComponent<RocketBehaviour>().damage = GlobalWeaponManager.weaponList[1].damage;
+                }
+                else
+                {
+                    weaponPrefab.GetComponent<LandmineBehaviour>().radius = skillManager.RocketAttackPoint.getValueAfterCalc(weaponPrefab.GetComponent<LandmineBehaviour>().radius);
+                    weaponPrefab.GetComponent<LandmineBehaviour>().damage = skillManager.RocketAttackPoint.getValueAfterCalc(GlobalWeaponManager.weaponList[1].damage);
+                }
+
                 //Destroy(weaponPrefab, 10);//temp
             }
         }
@@ -177,11 +227,11 @@ public class TankManager : MonoBehaviour
 
         if (canonRotate > 0.1f && canonTilte < 20f)
         {
-            canon.Rotate(new Vector3(towerRotationSpeed * Time.deltaTime, 0f, 0f));
+            canon.Rotate(new Vector3(canonRotationSpeed * Time.deltaTime, 0f, 0f));
         }
         else if (canonRotate < -0.1f && canonTilte > -20f)
         {
-            canon.Rotate(new Vector3(-towerRotationSpeed * Time.deltaTime, 0f, 0f));
+            canon.Rotate(new Vector3(-canonRotationSpeed * Time.deltaTime, 0f, 0f));
         }
         
     }
