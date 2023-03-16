@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 // reference: https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
 public class GameoverMenu : MonoBehaviour
 {
-    public static bool isPause = false;
+    public static bool isGameover = false;
 
     private AudioSource clickAudio;
 
@@ -20,7 +20,6 @@ public class GameoverMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void Restart()

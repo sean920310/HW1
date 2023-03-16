@@ -152,14 +152,17 @@ public class EnemyBot : MonoBehaviour
     private void ChasePlayer()
     {
         walkPoint = player.transform.position;
-        agent.SetDestination(walkPoint);
+        if(agent.isOnNavMesh)
+            agent.SetDestination(walkPoint);
 
         towerRotation();
     }
     private void AttackPlayer()
     {
         walkPoint = transform.position;
-        agent.SetDestination(walkPoint);
+
+        if (agent.isOnNavMesh)
+            agent.SetDestination(walkPoint);
 
         tankManager.Fire();
 

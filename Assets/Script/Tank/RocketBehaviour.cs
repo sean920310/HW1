@@ -15,6 +15,8 @@ public class RocketBehaviour : MonoBehaviour
     [SerializeField]
     private CrosshairBehaviour crosshairBehaviour;
 
+    public float damage = 0f;
+
     void Start()
     {
 
@@ -36,7 +38,7 @@ public class RocketBehaviour : MonoBehaviour
             if(crosshairBehaviour != null)
                 crosshairBehaviour.Blink();
 
-            collision.gameObject.GetComponent<TankManager>().damage(GlobalWeaponManager.weaponList[IdxInGWM].damage);
+            collision.gameObject.GetComponent<TankManager>().damage(damage);
         }
         Instantiate(explosionPrefab, gameObject.transform);
         rocketDestory();

@@ -20,6 +20,8 @@ public class CircleCrosshairBehaviour : MonoBehaviour
     [SerializeField]
     private RectTransform rtf;
 
+    private Vector3 oldPos;
+
     void Start()
     {
         
@@ -30,14 +32,13 @@ public class CircleCrosshairBehaviour : MonoBehaviour
     {
         Vector3 endOfBarrel = canon.position + canon.forward;
 
-        // Convert the position to screen space
         Vector3 screenPos = Camera.main.WorldToScreenPoint(endOfBarrel);
         screenPos.y = Screen.height * 0.5f;
-        // Set the position of the crosshair
 
-        if (Mathf.Abs(screenPos.x) <= 0.1)
-            rtf.localPosition = Vector3.zero;
-        else
-            rtf.position = screenPos;
+        screenPos = (oldPos + screenPos) * 0.5f;
+
+        rtf.position = screenPos;
+
+        oldPos = screenPos;
     }
 }

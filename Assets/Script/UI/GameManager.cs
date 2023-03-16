@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void lose()
     {
+        GameoverMenu.isGameover = true;
         GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
         bgm.GetComponent<AudioSource>().Pause();
 
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
     }
     private void win()
     {
+        GameoverMenu.isGameover = true;
         GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
         bgm.GetComponent<AudioSource>().Pause();
 
