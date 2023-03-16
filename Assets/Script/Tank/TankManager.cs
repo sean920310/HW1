@@ -10,6 +10,7 @@ public class TankManager : MonoBehaviour
     public GameObject headLight;
 
     public GameObject explosionPrefab;
+    public GameObject malfunctionEffect;
     public bool malfunction = false;
 
     public Transform[] rightWheelMeshs;
@@ -217,6 +218,6 @@ public class TankManager : MonoBehaviour
     private void tankInWaterDetect()
     { 
         malfunction = transform.position.y <= 5.5f; //lower than water surface
-        
+        malfunctionEffect.SetActive(malfunction);
     }
 }
