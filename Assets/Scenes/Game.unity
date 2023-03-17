@@ -11265,8 +11265,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971803626}
-  m_LocalRotation: {x: -0.042048026, y: 0.106186695, z: 0.0045845453, w: 0.9934462}
-  m_LocalPosition: {x: 97.30128, y: 0.79687977, z: 156.05545}
+  m_LocalRotation: {x: 0.072200075, y: 0.03739843, z: 0.0026033793, w: -0.9966854}
+  m_LocalPosition: {x: 96.834076, y: 0.33521843, z: 155.58084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11594,7 +11594,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988415052}
-  m_LocalRotation: {x: -0.066873856, y: -0, z: -0, w: 0.9977614}
+  m_LocalRotation: {x: -0.06687385, y: 1e-45, z: -0, w: 0.9977614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17222,7 +17222,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763002597}
-  m_LocalRotation: {x: -0.009443195, y: 0.000000017197213, z: 1.6240388e-10, w: 0.9999554}
+  m_LocalRotation: {x: -0.009443195, y: -0.000000017197216, z: -1.6240391e-10, w: 0.9999554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22812,8 +22812,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e543790d7f024a9b0057d9f6c05d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnable: 0
   player: {fileID: 1138096671}
+  wind: {fileID: 1768752522}
+  rainProbability: 0.6
   rainHeigt: 20
+  minRainTime: 10
+  maxRainTime: 30
+  minRainDensity: 100
+  maxRainDensity: 300
+  turbulence: 0
+  rainDensity: 0
+  rainTime: 0
 --- !u!224 &1878850427 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1233485413333236541, guid: d006788e8018cff4faf573af37fbfca7, type: 3}
