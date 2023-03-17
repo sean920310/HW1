@@ -29,6 +29,7 @@ public class GameMenuManager : MonoBehaviour
     {
         if(!GameoverMenu.activeSelf)
             GameoverMenu.SetActive(getState(MenuStates.Gameover));
+
         PauseMenu.SetActive(getState(MenuStates.Pause));
         MapMenu.SetActive(getState(MenuStates.Map));
         SkillMenu.SetActive(getState(MenuStates.Skill));
@@ -36,18 +37,20 @@ public class GameMenuManager : MonoBehaviour
         {
             if (menuState == 0)
             {
-                hideCursorAndStart();
 
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
+                    showCursorAndPause();
                     setState(MenuStates.Pause, true);
                 }
                 else if (Input.GetKeyDown(KeyCode.M))
                 {
+                    showCursorAndPause();
                     setState(MenuStates.Map, true);
                 }
                 else if (Input.GetKeyDown(KeyCode.G))
                 {
+                    showCursorAndPause();
                     setState(MenuStates.Skill, true);
                 }
             }
@@ -55,14 +58,17 @@ public class GameMenuManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
+                    hideCursorAndStart();
                     menuState = 0;
                 }
                 else if (Input.GetKeyDown(KeyCode.M))
                 {
+                    hideCursorAndStart();
                     setState(MenuStates.Map, false);
                 }
                 else if (Input.GetKeyDown(KeyCode.G))
                 {
+                    hideCursorAndStart();
                     setState(MenuStates.Skill, false);
                 }
             }

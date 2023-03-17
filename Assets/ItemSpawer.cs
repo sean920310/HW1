@@ -31,7 +31,7 @@ public class ItemSpawer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.childCount <= 2)
+        if (transform.childCount >= 2)
         {
             spawnCounter = spawnTime;
             return;

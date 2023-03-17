@@ -30,18 +30,6 @@ public class SkillMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.activeSelf == true)
-        {
-            Time.timeScale = 0.0f;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
 
         skillpointText.text = "Skill Point: " + skillManager.currentSkillPoint.ToString();
         HUDlevelText.text = levelText.text = "Lv. " + skillManager.currentLevel.ToString();
@@ -53,24 +41,5 @@ public class SkillMenu : MonoBehaviour
         expText.text = skillManager.currentExp.ToString() + "/" + skillManager.currentExpForNextLevel.ToString();
         HUDexpText.text = skillManager.currentExp.ToString() + "/" + skillManager.currentExpForNextLevel.ToString();
 
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            isShopping = !isShopping;
-            if (isShopping)
-            {
-                SkillMenuUI.SetActive(true);
-                Time.timeScale = 0.0f;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-            }
-            else
-            {
-                SkillMenuUI.SetActive(false);
-                Time.timeScale = 1.0f;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
     }
 }
