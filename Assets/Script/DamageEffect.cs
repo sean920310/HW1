@@ -6,6 +6,15 @@ using UnityEngine.Rendering.PostProcessing;
 public class DamageEffect : MonoBehaviour
 {
     static private PostProcessProfile postProcess;
+
+    public AnimationCurve lowHealthAnim;
+
+    static private bool lowHealthActive;
+    static private bool getDamageActive;
+
+    private float timeCount = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +24,33 @@ public class DamageEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(lowHealthActive && !getDamageActive)
+            UpdateLowHealth();
     }
 
-    public void getDamage()
+    /// <summary>
+    /// use StartCoroutine() to call
+    /// </summary>
+    static public IEnumerator GetDamage()
     {
-        postProcess.GetSetting<Vignette>().active = true;
-
+        getDamageActive = true;
+        postProcess.GetSetting<Vignette>().enabled.value = true;
+        postProcess.GetSetting<Vignette>().color.value = new Color(1f, 0.2f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        postProcess.GetSetting<Vignette>().enabled.value = lowHealthActive;
+        getDamageActive = false;
     }
 
-    static public void lowHealth(bool active)
+    static public void LowHealth(bool active)
     {
-        postProcess.GetSetting<Vignette>().active = active;
+        postProcess.GetSetting<Vignette>().enabled.value = (active || getDamageActive);
+        lowHealthActive = active;
+    }
+
+    private void UpdateLowHealth()
+    {
+        timeCount += Time.deltaTime;
+        if (timeCount > 1f) timeCount -= 1f;
+        postProcess.GetSetting<Vignette>().color.value = new Color(1f, lowHealthAnim.Evaluate(timeCount), lowHealthAnim.Evaluate(timeCount)); 
     }
 }

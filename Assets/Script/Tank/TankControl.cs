@@ -85,10 +85,6 @@ public class TankControl : MonoBehaviour
             tankManager.headLightControl(headLightOpen);
         }
 
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            DamageEffect.lowHealth(true);
-        }
     }
 
     
