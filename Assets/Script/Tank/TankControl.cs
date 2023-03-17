@@ -84,6 +84,7 @@ public class TankControl : MonoBehaviour
             headLightOpen = !headLightOpen;
             tankManager.headLightControl(headLightOpen);
         }
+
     }
 
     
