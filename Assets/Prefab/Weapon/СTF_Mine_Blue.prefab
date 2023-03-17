@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
+  damage: 0
   enemyTag: 
   aliveTime: 30
   explosionPrefab: {fileID: 1828176872806910, guid: 9a6314a3302853c40a8a2fae9ff17aeb, type: 3}
@@ -457,7 +458,7 @@ AudioSource:
   m_GameObject: {fileID: 8314945414142991816}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7207729588493695818, guid: 212d43e22e83ef14698444c9859bc074, type: 2}
   m_audioClip: {fileID: 8300000, guid: f9715d129718b0345a0eb41e7c039f5c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -553,7 +554,7 @@ AudioSource:
   m_GameObject: {fileID: 8314945414142991816}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7207729588493695818, guid: 212d43e22e83ef14698444c9859bc074, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1d9ce3abe725f8949a8e28c3fd40041d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.711

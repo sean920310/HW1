@@ -36,7 +36,7 @@ public class DamageEffect : MonoBehaviour
         getDamageActive = true;
         postProcess.GetSetting<Vignette>().enabled.value = true;
         postProcess.GetSetting<Vignette>().color.value = new Color(1f, 0.2f, 0.2f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.18f);
         postProcess.GetSetting<Vignette>().enabled.value = lowHealthActive;
         getDamageActive = false;
     }

@@ -75,6 +75,11 @@ public class GameMenuManager : MonoBehaviour
         }
 
     }
+    public void setPauseOff()
+    {
+        hideCursorAndStart();
+        setState(MenuStates.Pause, false);
+    }
 
     public void setState(MenuStates state, bool isOpen)
     {

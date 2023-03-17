@@ -933,6 +933,7 @@ Transform:
   - {fileID: 2700309435687911565}
   - {fileID: 7875361912657267454}
   - {fileID: 2314137678208319843}
+  - {fileID: 2512423728783566886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1109,6 +1110,7 @@ MonoBehaviour:
   gunClickSound: {fileID: 5333718913247482123}
   health: 100
   maxHealth: 100
+  lowHealthIndicate: 20
   originMaxHealth: 100
 --- !u!114 &518486826151764492
 MonoBehaviour:
@@ -1617,6 +1619,53 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &3939445544217260889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2512423728783566886}
+  - component: {fileID: 1836212520993466602}
+  m_Layer: 0
+  m_Name: CompassObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2512423728783566886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939445544217260889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3011469963919986407}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836212520993466602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939445544217260889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0a19851af7f7440aa9692d26ee4bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CompassObject: {fileID: 7653825354694233317, guid: 8294d6256da756840b1843650382d7a9, type: 3}
+  CompassImage: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!1 &4986354751542522707
 GameObject:
   m_ObjectHideFlags: 0
