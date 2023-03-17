@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TankWeaponManager : MonoBehaviour
 {
+
     [SerializeField]
     private SkillManager sm;
 
@@ -14,6 +15,11 @@ public class TankWeaponManager : MonoBehaviour
     {
         public int WeaponNumber;
         public float WeaponCounter;
+
+        public void addAmmo(int value)
+        {
+            WeaponNumber += value;
+        }
     }
 
     [SerializeField]
@@ -81,10 +87,6 @@ public class TankWeaponManager : MonoBehaviour
 
         if(sm != null)
         {
-            if (weaponStatusList[curWeaponIdx].WeaponNumber > GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber)
-                weaponStatusList[curWeaponIdx].WeaponNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
-            else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
-                weaponStatusList[curWeaponIdx].WeaponNumber = 0;
 
             if (curWeaponIdx == 0) // rocket
             {
@@ -94,7 +96,10 @@ public class TankWeaponManager : MonoBehaviour
             {
                 _curWeaponMaxNumber = (int)sm.LandmineMagazineSize.getValueAfterCalc((int)GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber);
             }
-
+            if (weaponStatusList[curWeaponIdx].WeaponNumber > _curWeaponMaxNumber)
+                weaponStatusList[curWeaponIdx].WeaponNumber = _curWeaponMaxNumber;
+            else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
+                weaponStatusList[curWeaponIdx].WeaponNumber = 0;
 
             if (curWeaponIdx == 0) // rocket
             {
@@ -107,6 +112,10 @@ public class TankWeaponManager : MonoBehaviour
         }
         else
         {
+            if (weaponStatusList[curWeaponIdx].WeaponNumber > GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber)
+                weaponStatusList[curWeaponIdx].WeaponNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
+            else if (weaponStatusList[curWeaponIdx].WeaponNumber < 0)
+                weaponStatusList[curWeaponIdx].WeaponNumber = 0;
             _curWeaponMaxNumber = GlobalWeaponManager.weaponList[curWeaponIdx].maxNumber;
             _curWeaponCD = GlobalWeaponManager.weaponList[curWeaponIdx].coolDownTime;
         }
@@ -131,7 +140,10 @@ public class TankWeaponManager : MonoBehaviour
         if (isAdd) _curWeaponIdx++;
         else _curWeaponIdx--;
 
-        _curWeaponIdx = Math.Clamp(_curWeaponIdx, 0, weaponStatusList.Length - 1);
+        if (_curWeaponIdx >= weaponStatusList.Length)
+            _curWeaponIdx = 0;
+        else if(_curWeaponIdx < 0)
+            _curWeaponIdx = weaponStatusList.Length - 1;
     }
 
     public bool currentWeaponAvailable(int number)
@@ -152,5 +164,14 @@ public class TankWeaponManager : MonoBehaviour
     public bool isReloading()
     {
         return (_curWeaponCounter > 0f);
+    }
+
+    public void addRocketAmmo(int number)
+    {
+        weaponStatusList[0].WeaponNumber += number;
+    }
+    public void addLandmineAmmo(int number)
+    {
+        weaponStatusList[1].WeaponNumber += number;
     }
 }
