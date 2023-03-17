@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TankManager : MonoBehaviour
 {
+
     [SerializeField]
     private SkillManager skillManager;
 
@@ -101,7 +102,6 @@ public class TankManager : MonoBehaviour
         {
             health = 0;
         }
-
 
         WheelMeshUpdate();
         tankEngineSound();

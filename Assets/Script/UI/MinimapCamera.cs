@@ -11,10 +11,12 @@ public class MinimapCamera : MonoBehaviour
     public float maxSize;
     public float minSize;
 
+    public float startSize;
+
     public bool fixedDirection;
     void Start()
     {
-        GetComponent<Camera>().orthographicSize = 55f;
+        GetComponent<Camera>().orthographicSize = startSize;
     }
 
     // Update is called once per frame
