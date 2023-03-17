@@ -7,6 +7,7 @@ using UnityEngine.AI;
 
 public class EnemyBot : MonoBehaviour
 {
+    private bool died = false;
     private NavMeshAgent agent;
 
     private GameObject player;
@@ -66,8 +67,13 @@ public class EnemyBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(tankManager.health <= 0f)
-            Destroy(gameObject);
+        if (tankManager.health <= 0f && !died)
+        {
+            StartCoroutine(Died());
+            died = true;
+        }
+        if (died)
+            return;
 
         // angle between player and enemy
         playerDir = (player.transform.position - transform.position).normalized;
@@ -177,5 +183,12 @@ public class EnemyBot : MonoBehaviour
     private void towerRotation()
     {
         tankManager.TowerAndCanonRotation(playerDirEular);
+    }
+
+    private IEnumerator Died()
+    {
+        Instantiate(tankManager.explosionPrefab, transform);
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }
