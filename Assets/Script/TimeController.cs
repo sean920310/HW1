@@ -33,7 +33,7 @@ public class TimeController : MonoBehaviour
     public Light moonLight;
     public float moonLightIntensity;
 
-    public bool isDay;
+    static public bool isDay;
 
     private TimeSpan sunriseTime;
     private TimeSpan sunsetTime;
