@@ -44,7 +44,7 @@ public class RainControl : MonoBehaviour
         {
             rainTime = Random.Range(minRainTime, maxRainTime); 
             
-            if (Random.Range(0, 1f) <¡@rainProbability)
+            if (Random.Range(0, 1f) < rainProbability)
             {
                 rainDensity = Random.Range(minRainDensity, maxRainDensity);
                 isEnable = true;
