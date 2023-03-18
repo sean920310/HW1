@@ -4519,8 +4519,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402227686}
-  m_LocalRotation: {x: -0.03146022, y: 0.32387164, z: 0.010922945, w: 0.94551474}
-  m_LocalPosition: {x: 93.3743, y: 1.1672392, z: 157.79112}
+  m_LocalRotation: {x: -0.054822758, y: 0.18171461, z: 0.010287078, w: 0.981768}
+  m_LocalPosition: {x: 93.35924, y: 0.75926113, z: 154.98917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5535,6 +5535,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 518486826151764492, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: fireCD
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 518486826151764492, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: sightFOV
       value: 180
       objectReference: {fileID: 0}
@@ -5691,9 +5695,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194228}
     - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: Force
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: MaxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: RotSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: headLight
       value: 
       objectReference: {fileID: 1707596437}
+    - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: breakForce
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 6671920547570658810, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: explosionPrefab
       value: 
@@ -6457,8 +6477,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616944059}
-  m_LocalRotation: {x: -0.03146022, y: 0.32387164, z: 0.010922945, w: 0.94551474}
-  m_LocalPosition: {x: 93.3743, y: 1.1672392, z: 157.79112}
+  m_LocalRotation: {x: -0.04783154, y: 0.13444802, z: 0.0066366093, w: 0.98974335}
+  m_LocalPosition: {x: 93.35921, y: 0.7592573, z: 154.98917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11638,6 +11658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillChooseAudio: {fileID: 827031874}
   SkillPointNotEnoughAudio: {fileID: 827031873}
+  LevelUpAudio: {fileID: 827031872}
   levelList:
   - expForNextLv: 10
     skillPointCanGet: 2
@@ -14410,8 +14431,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971803626}
-  m_LocalRotation: {x: -0.03146022, y: 0.32387164, z: 0.010922945, w: 0.94551474}
-  m_LocalPosition: {x: 93.3743, y: 1.1672392, z: 157.79112}
+  m_LocalRotation: {x: -0.039207578, y: 0.064416565, z: 0.0026711116, w: 0.997149}
+  m_LocalPosition: {x: 93.35917, y: 0.7592516, z: 154.9892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14872,7 +14893,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988415052}
-  m_LocalRotation: {x: -0.06687384, y: 1e-45, z: -0, w: 0.9977614}
+  m_LocalRotation: {x: -0.06687384, y: -0, z: -0, w: 0.9977614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16368,6 +16389,14 @@ PrefabInstance:
     - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: weaponStatusList.Array.data[1].WeaponNumber
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weaponStatusList.Array.data[0].WeaponCounter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680152781084801678, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
+      propertyPath: weaponStatusList.Array.data[1].WeaponCounter
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880972166715730378, guid: a30540c41d7d5ed4281d72b4916afb5e, type: 3}
       propertyPath: m_Enabled
@@ -23310,7 +23339,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763002597}
-  m_LocalRotation: {x: -0.009443175, y: 0.000000017222412, z: 1.626415e-10, w: 0.9999554}
+  m_LocalRotation: {x: -0.009443175, y: -0.000000017222408, z: -1.6264147e-10, w: 0.9999554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

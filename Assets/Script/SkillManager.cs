@@ -28,6 +28,8 @@ public class SkillManager : MonoBehaviour
 
     [SerializeField] AudioSource SkillChooseAudio;
     [SerializeField] AudioSource SkillPointNotEnoughAudio;
+    [SerializeField] AudioSource LevelUpAudio;
+
 
     [Serializable]
     public struct Level
@@ -174,6 +176,7 @@ public class SkillManager : MonoBehaviour
 
     void levelUp()
     {
+        LevelUpAudio.Play();
         _currentLevel = _currentLevel + 1;
         if(_currentLevel >= levelList.Length)
         {
