@@ -11617,25 +11617,53 @@ MonoBehaviour:
   _stages:
   - EnemyCount: 1
     NextStageTime: 120
-    SpawnMaxTime: 6
-    SpawnMinTime: 6
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
     EnemyMaxHealth: 50
     EnemyMinHealth: 50
     stageClearExp: 20
   - EnemyCount: 2
     NextStageTime: 120
-    SpawnMaxTime: 8
-    SpawnMinTime: 8
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
     EnemyMaxHealth: 60
     EnemyMinHealth: 60
     stageClearExp: 40
   - EnemyCount: 4
     NextStageTime: 120
-    SpawnMaxTime: 12
-    SpawnMinTime: 12
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
     EnemyMaxHealth: 80
     EnemyMinHealth: 80
-    stageClearExp: 80
+    stageClearExp: 40
+  - EnemyCount: 4
+    NextStageTime: 120
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
+    EnemyMaxHealth: 150
+    EnemyMinHealth: 100
+    stageClearExp: 40
+  - EnemyCount: 8
+    NextStageTime: 120
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
+    EnemyMaxHealth: 150
+    EnemyMinHealth: 100
+    stageClearExp: 40
+  - EnemyCount: 8
+    NextStageTime: 120
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
+    EnemyMaxHealth: 150
+    EnemyMinHealth: 100
+    stageClearExp: 40
+  - EnemyCount: 8
+    NextStageTime: 120
+    SpawnMaxTime: 5
+    SpawnMinTime: 5
+    EnemyMaxHealth: 150
+    EnemyMinHealth: 100
+    stageClearExp: 40
   prepareTime: 5
   _isPreparing: 1
   _currentStage: 0
@@ -11665,6 +11693,18 @@ MonoBehaviour:
   - expForNextLv: 20
     skillPointCanGet: 3
   - expForNextLv: 40
+    skillPointCanGet: 3
+  - expForNextLv: 80
+    skillPointCanGet: 3
+  - expForNextLv: 100
+    skillPointCanGet: 3
+  - expForNextLv: 100
+    skillPointCanGet: 3
+  - expForNextLv: 100
+    skillPointCanGet: 3
+  - expForNextLv: 100
+    skillPointCanGet: 3
+  - expForNextLv: 100
     skillPointCanGet: 3
   RocketMagazineSize:
     currentSkillLV: 0
@@ -14893,7 +14933,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988415052}
-  m_LocalRotation: {x: -0.06687384, y: -0, z: -0, w: 0.9977614}
+  m_LocalRotation: {x: -0.06687385, y: -0, z: -0, w: 0.9977614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20118,7 +20158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477473872}
-  m_LocalRotation: {x: -0.038269486, y: 0.00000001732758, z: 6.636038e-10, w: 0.99926746}
+  m_LocalRotation: {x: -0.038269486, y: -0.00000001732758, z: -6.636038e-10, w: 0.99926746}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33122,11 +33162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003465516
+      value: -0.00000003465516
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000013272076
+      value: -0.0000000013272076
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
