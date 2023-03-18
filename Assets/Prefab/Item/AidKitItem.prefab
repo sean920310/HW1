@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6468245262854378682}
   - component: {fileID: -5773994042018278797}
   m_Layer: 0
-  m_Name: FirstAidKit_Red
+  m_Name: AidKitItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

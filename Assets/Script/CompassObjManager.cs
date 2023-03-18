@@ -16,7 +16,7 @@ public class CompassObjManager : MonoBehaviour
         float finalX = getAngle() * Screen.width * 2f + Screen.width * 0.5f;
         tmpPrefeb = Instantiate(CompassObject, CompassImage.transform.position, Quaternion.identity);
         tmpPrefeb.GetComponent<RectTransform>().localPosition = new Vector3(finalX, 0.0f, 0.0f);
-        tmpPrefeb.transform.parent = CompassImage.transform;
+        tmpPrefeb.transform.SetParent(CompassImage.transform);
         tmpPrefeb.SetActive(true);
     }
 

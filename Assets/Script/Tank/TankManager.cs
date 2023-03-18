@@ -22,7 +22,7 @@ public class TankManager : MonoBehaviour
     public WheelCollider[] rightWheelColliders;
     public WheelCollider[] leftWheelColliders;
 
-    public float Force, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
+    public float HorizontalForce, Force, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
 
     public float originTowerRotationSpeed;
     public float originCanonRotationSpeed;
@@ -132,8 +132,16 @@ public class TankManager : MonoBehaviour
         rightPower = VerticalAxis;
         leftPower = VerticalAxis;
 
-        rightPower -= HorizontalAxis * RotSpeed;
-        leftPower += HorizontalAxis * RotSpeed;
+        if(VerticalAxis < 0f) // backu
+        {
+            rightPower -= HorizontalAxis * -RotSpeed;
+            leftPower += HorizontalAxis * -RotSpeed;
+        }
+        else
+        {
+            rightPower -= HorizontalAxis * RotSpeed * HorizontalForce;
+            leftPower += HorizontalAxis * RotSpeed * HorizontalForce;
+        }
 
         foreach (var wheelCols in rightWheelColliders)
         {
@@ -144,6 +152,8 @@ public class TankManager : MonoBehaviour
                 wheelCols.brakeTorque = engineBreakForce;
             else
                 wheelCols.brakeTorque = 0f;
+
+            
         }
 
         foreach (var wheelCols in leftWheelColliders)
