@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TankManager : MonoBehaviour
 {
+
     [SerializeField]
     private SkillManager skillManager;
 
@@ -53,9 +54,12 @@ public class TankManager : MonoBehaviour
     public float health;
     public float maxHealth = 100;
     public float originMaxHealth = 100;
+    public float lowHealthHint = 20f;
 
     private float regenerationCounter;
     private float regenerationTime = 1.0f;
+
+    private float waterDamageCounter = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -99,10 +103,12 @@ public class TankManager : MonoBehaviour
             health = 0;
         }
 
-
         WheelMeshUpdate();
         tankEngineSound();
         tankInWaterDetect();
+
+        if(gameObject.tag == "Player")
+            DamageEffect.LowHealth(health <= lowHealthHint);
 
     }
     private void WheelMeshUpdate()
@@ -247,6 +253,11 @@ public class TankManager : MonoBehaviour
     {
         health -= damageNumber;
         if(health < 0) health = 0;
+
+        if(gameObject.tag == "Player")
+        {
+            StartCoroutine(DamageEffect.GetDamage());
+        }
     }
 
 
@@ -270,5 +281,14 @@ public class TankManager : MonoBehaviour
     { 
         malfunction = transform.position.y <= 5.5f; //lower than water surface
         malfunctionEffect.SetActive(malfunction);
+        if (malfunction)
+        {
+            waterDamageCounter -= Time.deltaTime;
+            if(waterDamageCounter<=0)
+            {
+                damage(10f);
+                waterDamageCounter += 1f;
+            }
+        }
     }
 }

@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 4598617822355566001}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.813, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5724509616340560694}
   m_RootOrder: 0
@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 7147690604214154820}
   - component: {fileID: 8310778524335197239}
   - component: {fileID: 7963419208603570550}
+  - component: {fileID: 6493347495122571441}
   m_Layer: 0
   m_Name: ItemSpawnpoint
   m_TagString: Untagged
@@ -196,3 +197,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7171477778319418727, guid: 3d210b2be9d4b9144b53828dfc2e73e3, type: 3}
+--- !u!114 &6493347495122571441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7101049771034915895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8efd40f4c28abb45929103614065f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnCounter: 0
+  spawnTime: 120
+  minimapSymbol: {fileID: 8089756914002139537}
+  itemExistColor: {r: 0, g: 1, b: 0, a: 1}
+  itemNotExistColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}

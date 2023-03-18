@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         {
             win();
         }
-        if(playerTM.health == 0) // gameover
+        if(playerTM.health <= 0) // gameover
         {
             lose();
         }

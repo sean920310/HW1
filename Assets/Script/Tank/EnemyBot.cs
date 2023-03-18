@@ -66,8 +66,8 @@ public class EnemyBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(tankManager.health <= 0f)
-            Destroy(gameObject);
+        if (tankManager.health <= 0f )
+            Died();
 
         // angle between player and enemy
         playerDir = (player.transform.position - transform.position).normalized;
@@ -177,5 +177,11 @@ public class EnemyBot : MonoBehaviour
     private void towerRotation()
     {
         tankManager.TowerAndCanonRotation(playerDirEular);
+    }
+
+    private void Died()
+    {
+        Instantiate(tankManager.explosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
