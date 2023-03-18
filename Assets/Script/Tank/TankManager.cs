@@ -143,9 +143,18 @@ public class TankManager : MonoBehaviour
             leftPower += HorizontalAxis * RotSpeed * HorizontalForce;
         }
 
+
         foreach (var wheelCols in rightWheelColliders)
         {
-            wheelCols.motorTorque = rightPower * Force * Time.deltaTime;
+            if(wheelCols.attachedRigidbody.velocity.magnitude <= 0.1f)
+            {
+                wheelCols.motorTorque = rightPower * Force * Time.deltaTime;
+            }
+            else
+            {
+                wheelCols.motorTorque = rightPower * Force * Time.deltaTime;
+            }
+
             if (Input.GetKey(KeyCode.Space))
                 wheelCols.brakeTorque = breakForce;
             else if (rightPower == 0f)
@@ -158,7 +167,15 @@ public class TankManager : MonoBehaviour
 
         foreach (var wheelCols in leftWheelColliders)
         {
-            wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
+            if (wheelCols.attachedRigidbody.velocity.magnitude <= 0.1f)
+            {
+                wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
+            }
+            else
+            {
+                wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
+            }
+
             if (Input.GetKey(KeyCode.Space))
                 wheelCols.brakeTorque = breakForce;
             else if (leftPower == 0f)

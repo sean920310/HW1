@@ -19,7 +19,6 @@ public class GameStageManager : MonoBehaviour
     {
         public int EnemyCount;
         public float NextStageTime; // sec
-        public Transform SpawnPoint;
         public float SpawnMaxTime;
         public float SpawnMinTime;
 
@@ -47,6 +46,8 @@ public class GameStageManager : MonoBehaviour
     [SerializeField]
     private GameObject enemyList;
 
+    [SerializeField]
+    public Transform[] spawnPoints;
 
     [SerializeField]
     public StageInfo[] _stages;
@@ -202,8 +203,8 @@ public class GameStageManager : MonoBehaviour
     }
 
     private void spawnEnemy() {
-
-        GameObject prefab = Instantiate(enemyPrefab, _stages[_currentStage].SpawnPoint.position, Quaternion.identity);
+        
+        GameObject prefab = Instantiate(enemyPrefab, spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
         prefab.transform.parent = enemyList.transform;
         prefab.SetActive(true);
 

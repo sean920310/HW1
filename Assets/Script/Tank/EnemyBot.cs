@@ -101,6 +101,8 @@ public class EnemyBot : MonoBehaviour
             AttackPlayer();
 
         oldPosition = transform.position;
+
+        HeadLight(!TimeController.isDay);
     }
 
     private void SearchWalkPoint()
@@ -183,5 +185,10 @@ public class EnemyBot : MonoBehaviour
     {
         Instantiate(tankManager.explosionPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void HeadLight(bool enable)
+    {
+        tankManager.headLightControl(enable);
     }
 }
