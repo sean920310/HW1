@@ -5,6 +5,7 @@ using System.Diagnostics;
 using TMPro;
 using TMPro.SpriteAssetUtilities;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // reference: https://www.youtube.com/watch?v=L4t2c1_Szdk&ab_channel=KetraGames
 
@@ -144,5 +145,20 @@ public class TimeController : MonoBehaviour
         }
         return result;
     }
+    public void setTime(string hours)
+    {
+        float tmpHours;
+        float.TryParse(hours, out tmpHours);
 
+        tmpHours =  Mathf.Clamp(tmpHours, 0, 24);
+        currentTime = new DateTime();
+        currentTime.AddHours(tmpHours);
+    }
+    public void setTimeMultiplier(string mult)
+    {
+        float tmpMult;
+        float.TryParse(mult, out tmpMult);
+        tmpMult = Mathf.Clamp(tmpMult, 0, 20000);
+        timeMutiplier = tmpMult;
+    }
 }

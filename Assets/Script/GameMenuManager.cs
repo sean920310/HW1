@@ -11,12 +11,14 @@ public class GameMenuManager : MonoBehaviour
         Pause       = 1 << 1,
         Map         = 1 << 2,
         Skill       = 1 << 3,
+        Cheat       = 1 << 4
     }
 
     [SerializeField] private GameObject GameoverMenu;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject MapMenu;
     [SerializeField] private GameObject SkillMenu;
+    [SerializeField] private GameObject CheatMenu;
 
     private uint menuState = 0;
     void Start()
@@ -33,6 +35,8 @@ public class GameMenuManager : MonoBehaviour
         PauseMenu.SetActive(getState(MenuStates.Pause));
         MapMenu.SetActive(getState(MenuStates.Map));
         SkillMenu.SetActive(getState(MenuStates.Skill));
+        CheatMenu.SetActive(getState(MenuStates.Cheat));
+
         if (!getState(MenuStates.Gameover))
         {
             if (menuState == 0)
@@ -53,6 +57,11 @@ public class GameMenuManager : MonoBehaviour
                     showCursorAndPause();
                     setState(MenuStates.Skill, true);
                 }
+                else if (Input.GetKeyDown(KeyCode.Slash))
+                {
+                    showCursorAndPause();
+                    setState(MenuStates.Cheat, true);
+                }
             }
             else
             {
@@ -70,6 +79,11 @@ public class GameMenuManager : MonoBehaviour
                 {
                     hideCursorAndStart();
                     setState(MenuStates.Skill, false);
+                }
+                else if (Input.GetKeyDown(KeyCode.Slash))
+                {
+                    hideCursorAndStart();
+                    setState(MenuStates.Cheat, false);
                 }
             }
         }

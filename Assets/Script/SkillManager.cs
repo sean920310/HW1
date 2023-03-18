@@ -167,6 +167,11 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public void addSkillPoint(int point)
+    {
+        _currentSkillPoint+= point;
+    }
+
     void levelUp()
     {
         _currentLevel = _currentLevel + 1;
