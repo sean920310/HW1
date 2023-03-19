@@ -332,4 +332,10 @@ public class TankManager : MonoBehaviour
             }
         }
     }
+
+    public void tankDied()
+    {
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        gameObject.SetActive(false);
+    }
 }

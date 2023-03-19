@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator lose()
     {
+        playerTM.tankDied();
         gameMenuManager.setHUD(false);
 
         yield return new WaitForSeconds(2f);
