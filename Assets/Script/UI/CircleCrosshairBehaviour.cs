@@ -58,11 +58,11 @@ public class CircleCrosshairBehaviour : MonoBehaviour
         float finalX = ansX.x * canvasRTF.rect.size.x * 1.5f;
         float finalY = ansY.y * canvasRTF.rect.size.y * 1.5f;
 
-        if (Mathf.Abs(finalX) <= 10f)
-            finalX = 0f;
+        //if (Mathf.Abs(finalX) <= 10f)
+        //    finalX = 0f;
 
-        if (Mathf.Abs(finalY) <= 10f)
-            finalY = 0f;
+        //if (Mathf.Abs(finalY) <= 10f)
+        //    finalY = 0f;
 
         rtf.localPosition = new Vector3(finalX, finalY, 0.0f);
     }

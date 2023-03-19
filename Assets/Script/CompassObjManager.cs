@@ -23,8 +23,19 @@ public class CompassObjManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float finalX = getAngle() * (CompassImage.GetComponent<RectTransform>().rect.size.x / 2);
-        tmpPrefeb.GetComponent<RectTransform>().localPosition = new Vector3(finalX, 0.0f, 0.0f);
+        float finalX;
+
+        if (getAngle() < 90f)// in sight
+        {
+            finalX = getAngle() * (CompassImage.GetComponent<RectTransform>().rect.size.x / 2);
+            tmpPrefeb.SetActive(true);
+            tmpPrefeb.GetComponent<RectTransform>().localPosition = new Vector3(finalX, 0.0f, 0.0f);
+        }
+        else
+        {
+            tmpPrefeb.SetActive(false);
+        }
+
     }
     private void OnDestroy()
     {

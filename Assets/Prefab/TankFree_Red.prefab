@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 6060047694992603345}
   - component: {fileID: 2522431889549542687}
   - component: {fileID: 5333718913247482123}
+  - component: {fileID: 6115961750767986305}
   m_Layer: 9
   m_Name: TankFree_Red
   m_TagString: Enemy
@@ -1094,6 +1095,7 @@ MonoBehaviour:
   - {fileID: 2581530660834496640}
   - {fileID: 3746017379223078758}
   Force: 6000
+  MaxSpeed: 0
   RotSpeed: 2
   breakForce: 600
   towerRotationSpeed: 0.5
@@ -1110,8 +1112,8 @@ MonoBehaviour:
   gunClickSound: {fileID: 5333718913247482123}
   health: 100
   maxHealth: 100
-  lowHealthIndicate: 20
   originMaxHealth: 100
+  lowHealthHint: 20
 --- !u!114 &518486826151764492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d4ed86bfe739748bdd2cb71f90c970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillManager: {fileID: 0}
   playerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1135,6 +1138,8 @@ MonoBehaviour:
   attackRange: 25
   sightFOV: 0
   idleTime: 2
+  fireCD: 2
+  EnemyExp: 0
   idleCounter: 0
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
@@ -1474,6 +1479,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6115961750767986305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503318476722469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c619fca981695ab42a67a7b3c91124ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &3745786531496338126
 GameObject:
   m_ObjectHideFlags: 0

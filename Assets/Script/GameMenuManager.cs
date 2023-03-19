@@ -20,7 +20,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private GameObject SkillMenu;
     [SerializeField] private GameObject CheatMenu;
 
-    private uint menuState = 0;
+    public static uint menuState = 0;
     void Start()
     {
         
@@ -29,8 +29,12 @@ public class GameMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!GameoverMenu.activeSelf)
+        if (GameoverMenu.activeSelf)
+        {
+
+            Time.timeScale = 1.0f;
             GameoverMenu.SetActive(getState(MenuStates.Gameover));
+        }
 
         PauseMenu.SetActive(getState(MenuStates.Pause));
         MapMenu.SetActive(getState(MenuStates.Map));
@@ -109,7 +113,7 @@ public class GameMenuManager : MonoBehaviour
             menuState = menuState & tmp;
         }
     }
-    public bool getState(MenuStates state)
+    public static bool getState(MenuStates state)
     {
         uint tmp = (System.UInt32)state;
         return ((menuState & tmp) != 0);
