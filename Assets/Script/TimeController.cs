@@ -152,7 +152,7 @@ public class TimeController : MonoBehaviour
 
         tmpHours =  Mathf.Clamp(tmpHours, 0, 24);
         currentTime = new DateTime();
-        currentTime.AddHours(tmpHours);
+        currentTime = currentTime.AddHours(tmpHours);
     }
     public void setTimeMultiplier(string mult)
     {

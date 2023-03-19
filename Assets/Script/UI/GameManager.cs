@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         if(dieCounter > 3.0f )
         {
+
             lose();
         }
     }

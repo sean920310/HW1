@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 public class EnemyBot : MonoBehaviour
 {
+    [SerializeField] private SkillManager skillManager;
+
     private NavMeshAgent agent;
 
     private GameObject player;
@@ -26,6 +28,7 @@ public class EnemyBot : MonoBehaviour
     public float fireCD = 2f;
     private float fireTime;
 
+    public float EnemyExp;
 
     [Header("Information")]
     [ReadOnly]
@@ -204,6 +207,9 @@ public class EnemyBot : MonoBehaviour
     private void Died()
     {
         Instantiate(tankManager.explosionPrefab, transform.position, transform.rotation);
+
+        skillManager.addExp(EnemyExp);
+        gameObject.GetComponent<EnemyDrop>().spawnItem();
         Destroy(gameObject);
     }
 

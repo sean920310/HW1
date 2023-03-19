@@ -10,15 +10,22 @@ public class GameoverMenu : MonoBehaviour
 {
     private AudioSource clickAudio;
 
+    private bool isAnimationPlay = false;
+    private Animator animator;
+
     void Start()
     {
         clickAudio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!isAnimationPlay && GameMenuManager.getState(GameMenuManager.MenuStates.Gameover))
+        {
+            animationPlay();
+        }
     }
 
     public void Restart()
@@ -37,4 +44,10 @@ public class GameoverMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void animationPlay()
+    {
+        animator.SetTrigger("open");
+    }
+
 }
