@@ -1415,7 +1415,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 827031867}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: win
+        m_MethodName: CheatMenuWin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16353,7 +16353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988415052}
-  m_LocalRotation: {x: -0.06687384, y: -1e-45, z: -0, w: 0.9977614}
+  m_LocalRotation: {x: -0.066873856, y: -0, z: -0, w: 0.9977614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
