@@ -15,6 +15,7 @@ public class GameMenuManager : MonoBehaviour
         Guide       = 1 << 5,
     }
 
+    [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject GameoverMenu;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject MapMenu;
@@ -166,5 +167,10 @@ public class GameMenuManager : MonoBehaviour
 
         showCursorAndPause();
         GameoverMenu.SetActive(getState(MenuStates.Gameover));
+    }
+
+    public void setHUD(bool isHUDon)
+    {
+        HUD.SetActive(isHUDon);
     }
 }
