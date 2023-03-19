@@ -79,6 +79,9 @@ public class EnemyBot : MonoBehaviour
             return;
         }
 
+        if (!player)
+            return;
+
         // angle between player and enemy
         playerDir = (player.transform.position - transform.position).normalized;
         playerDirEular = Quaternion.LookRotation(playerDir, Vector3.up).eulerAngles;
