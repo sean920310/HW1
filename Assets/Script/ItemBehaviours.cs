@@ -24,7 +24,12 @@ public class ItemBehaviours : MonoBehaviour
                     other.transform.root.gameObject.GetComponent<TankManager>().health += number;
                     break;
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        gameObject.transform.Rotate(0, 25 * Time.deltaTime, 0);
     }
 }
