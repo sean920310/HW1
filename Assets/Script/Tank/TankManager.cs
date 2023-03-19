@@ -239,8 +239,8 @@ public class TankManager : MonoBehaviour
                 }
                 else
                 {
-                    weaponPrefab.GetComponent<LandmineBehaviour>().radius = skillManager.RocketAttackPoint.getValueAfterCalc(weaponPrefab.GetComponent<LandmineBehaviour>().radius);
-                    weaponPrefab.GetComponent<LandmineBehaviour>().damage = skillManager.RocketAttackPoint.getValueAfterCalc(GlobalWeaponManager.weaponList[1].damage);
+                    weaponPrefab.GetComponent<LandmineBehaviour>().radius = skillManager.LandmineRange.getValueAfterCalc(weaponPrefab.GetComponent<LandmineBehaviour>().radius);
+                    weaponPrefab.GetComponent<LandmineBehaviour>().damage = skillManager.LandmineAttackPoint.getValueAfterCalc(GlobalWeaponManager.weaponList[1].damage);
                 }
 
                 //Destroy(weaponPrefab, 10);//temp

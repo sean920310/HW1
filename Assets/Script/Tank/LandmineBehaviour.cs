@@ -81,7 +81,7 @@ public class LandmineBehaviour : MonoBehaviour
         bool detected = false;
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag(enemyTag))
+            if (hitCollider.CompareTag(enemyTag) && hitCollider.gameObject.GetComponent<TankManager>())
             {
                 hitCollider.gameObject.GetComponent<TankManager>().damage(damage);
                 detected = true;
