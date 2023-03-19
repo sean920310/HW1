@@ -77,4 +77,14 @@ public class RainControl : MonoBehaviour
                 wind.windTurbulence -= Time.deltaTime;
         }
     }
+
+    public void Enable()
+    {
+        isEnable = true;
+    }
+
+    public void Disable()
+    {
+        isEnable = false;
+    }
 }
