@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 public class ItemBehaviours : MonoBehaviour
 {
     public ItemSpawer.ItemType itemType;
+    public AudioSource pickupAudio;
     public int number;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.gameObject.tag == "Player" || other.transform.root.gameObject.tag == "Enemy")
+        if ((other.transform.root.gameObject.tag == "Player" || other.transform.root.gameObject.tag == "Enemy") && gameObject.GetComponent<MeshRenderer>().enabled)
         {
             TankWeaponManager twm = other.transform.root.gameObject.GetComponent<TankWeaponManager>();
             switch (itemType)
@@ -24,7 +25,9 @@ public class ItemBehaviours : MonoBehaviour
                     other.transform.root.gameObject.GetComponent<TankManager>().health += number;
                     break;
             }
-            Destroy(gameObject);
+            pickupAudio.Play();
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject, pickupAudio.clip.length);
         }
     }
 

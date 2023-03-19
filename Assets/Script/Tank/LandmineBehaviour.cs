@@ -78,15 +78,20 @@ public class LandmineBehaviour : MonoBehaviour
     void ExplosionDetection()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        bool detected = false;
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag(enemyTag))
             {
                 hitCollider.gameObject.GetComponent<TankManager>().damage(damage);
-                Instantiate(explosionPrefab, gameObject.transform);
-                Explosion();
-                break;
+                detected = true;
+                //break;
             }
+        }
+        if(detected)
+        {
+            Instantiate(explosionPrefab, gameObject.transform);
+            Explosion();
         }
     }
 

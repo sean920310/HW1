@@ -1540,7 +1540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60915315}
-  m_LocalRotation: {x: -0.03826962, y: 0.000000034655155, z: -0.0000000013272118, w: -0.99926746}
+  m_LocalRotation: {x: -0.03826962, y: -0.000000034655155, z: 0.0000000013272118, w: -0.99926746}
   m_LocalPosition: {x: 94.261, y: 0.691, z: 151.969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2280,6 +2280,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8adde7cb3e9e4934ebf6a97fe154e477, type: 3}
+--- !u!1 &132288640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2457601262040078919, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+  m_PrefabInstance: {fileID: 537477333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &132288644
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132288640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2212350337115244503, guid: 3d210b2be9d4b9144b53828dfc2e73e3, type: 3}
 --- !u!1 &135813808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,8 +4432,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296128231}
-  m_LocalRotation: {x: -0.03826962, y: -0.00000003465459, z: 0.0000000013271901, w: -0.99926746}
-  m_LocalPosition: {x: 94.261, y: 0.691, z: 151.969}
+  m_LocalRotation: {x: 0.009804431, y: 0.8687441, z: 0.01721169, w: -0.49486497}
+  m_LocalPosition: {x: 179.86488, y: -1.5096626, z: 233.80692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5107,8 +5126,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402227686}
-  m_LocalRotation: {x: -0.057714812, y: 0.39873374, z: 0.025154062, w: 0.91490316}
-  m_LocalPosition: {x: 176.48058, y: -1.6047258, z: 230.75618}
+  m_LocalRotation: {x: -0.058067188, y: 0.3403627, z: 0.021065297, w: 0.9382632}
+  m_LocalPosition: {x: 174.65926, y: -2.84301, z: 228.45988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6128,6 +6147,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8971032376051904823, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 82520927781290061, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: m_TagString
       value: Enemy
@@ -6138,7 +6161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 518486826151764492, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: fireCD
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 518486826151764492, guid: 94f48f7e240ec7840bb8a370d9703922, type: 3}
       propertyPath: EnemyExp
@@ -7353,8 +7376,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616944059}
-  m_LocalRotation: {x: -0.20540537, y: 0.27883956, z: 0.061184008, w: 0.9361163}
-  m_LocalPosition: {x: 176.43513, y: -1.6482887, z: 230.6739}
+  m_LocalRotation: {x: -0.114753805, y: 0.19535238, z: 0.023023013, w: 0.9737243}
+  m_LocalPosition: {x: 176.2702, y: -2.7595253, z: 227.92624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12430,6 +12453,7 @@ MonoBehaviour:
   player: {fileID: 2006410193}
   gameoverMenuUI: {fileID: 788973640}
   gameoverMessage: {fileID: 1628433710}
+  gameoverTitle: {fileID: 163091334}
   winAudio: {fileID: 827031877}
   lossAudio: {fileID: 827031878}
   gameMenuManager: {fileID: 604409656}
@@ -15797,8 +15821,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971803626}
-  m_LocalRotation: {x: 0.1097238, y: 0.88173497, z: 0.2525922, w: -0.38301605}
-  m_LocalPosition: {x: 187.03368, y: -9.791709, z: 242.12198}
+  m_LocalRotation: {x: -0.03826962, y: -0.000000034655155, z: 0.0000000013272118, w: -0.99926746}
+  m_LocalPosition: {x: 94.261, y: 0.691, z: 151.969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16353,7 +16377,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988415052}
-  m_LocalRotation: {x: -0.06687384, y: -0, z: -0, w: 0.9977614}
+  m_LocalRotation: {x: -0.066873856, y: 1e-45, z: -0, w: 0.9977614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16703,15 +16727,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2006410209}
-        m_TargetAssemblyTypeName: TankWeaponManager, Assembly-CSharp
-        m_MethodName: addLandmineAmmo
-        m_Mode: 3
+      - m_Target: {fileID: 2006410199}
+        m_TargetAssemblyTypeName: TankManager, Assembly-CSharp
+        m_MethodName: damage
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
-          m_FloatArgument: 0
+          m_FloatArgument: -100
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -22165,7 +22189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477473872}
-  m_LocalRotation: {x: -0.038269486, y: 0.000000017326444, z: 6.635602e-10, w: 0.99926746}
+  m_LocalRotation: {x: -0.038269486, y: -0.00000001732758, z: -6.636038e-10, w: 0.99926746}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25790,7 +25814,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763002597}
-  m_LocalRotation: {x: -0.0094431965, y: -0.000000017856252, z: -1.686276e-10, w: 0.9999554}
+  m_LocalRotation: {x: -0.009443175, y: -0.000000017222415, z: -1.6264153e-10, w: 0.9999554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36211,11 +36235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003465459
+      value: -0.00000003465516
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000013271858
+      value: -0.0000000013272076
       objectReference: {fileID: 0}
     - target: {fileID: 7783346153561774266, guid: b325903b7f7ade246810e06d01ac2193, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
