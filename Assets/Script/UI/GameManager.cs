@@ -106,4 +106,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
 
     }
+
+    public void CheatMenuWin()
+    {
+        StartCoroutine(win());
+    }
 }
