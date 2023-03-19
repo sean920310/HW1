@@ -4628,7 +4628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402227686}
   m_LocalRotation: {x: 0.09395596, y: 0.8514327, z: 0.16304551, w: -0.4895415}
-  m_LocalPosition: {x: 426.873, y: -56.890915, z: 230.03662}
+  m_LocalPosition: {x: 427.71582, y: -57.278893, z: 230.52736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6621,7 +6621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616944059}
   m_LocalRotation: {x: 0.09395596, y: 0.8514327, z: 0.16304551, w: -0.4895415}
-  m_LocalPosition: {x: 426.873, y: -56.890915, z: 230.03662}
+  m_LocalPosition: {x: 427.71582, y: -57.278893, z: 230.52736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14520,8 +14520,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.11372549, g: 1, b: 0, a: 1}
-  m_Intensity: 4
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -14808,7 +14808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971803626}
   m_LocalRotation: {x: 0.09395596, y: 0.8514327, z: 0.16304551, w: -0.4895415}
-  m_LocalPosition: {x: 426.873, y: -56.890915, z: 230.03662}
+  m_LocalPosition: {x: 427.71582, y: -57.278893, z: 230.52736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14868,8 +14868,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.11273074, g: 1, b: 0, a: 1}
-  m_Intensity: 4
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -23896,7 +23896,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763002597}
-  m_LocalRotation: {x: -0.009443175, y: 0.000000017222415, z: 1.6264153e-10, w: 0.9999554}
+  m_LocalRotation: {x: -0.009443195, y: 0.00000001719722, z: 1.6240395e-10, w: 0.9999554}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24694,8 +24694,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 4
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
