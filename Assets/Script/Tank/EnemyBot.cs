@@ -23,6 +23,9 @@ public class EnemyBot : MonoBehaviour
     public float sightFOV;
 
     public float idleTime;
+    public float fireCD = 2f;
+    private float fireTime;
+
 
     [Header("Information")]
     [ReadOnly]
@@ -61,13 +64,17 @@ public class EnemyBot : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         tankManager = transform.GetComponent<TankManager>();
+        fireTime = fireCD;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (tankManager.health <= 0f )
+        {
             Died();
+            return;
+        }
 
         // angle between player and enemy
         playerDir = (player.transform.position - transform.position).normalized;
@@ -102,6 +109,7 @@ public class EnemyBot : MonoBehaviour
 
         oldPosition = transform.position;
 
+        FireCDUpdate();
         HeadLight(!TimeController.isDay);
     }
 
@@ -166,9 +174,21 @@ public class EnemyBot : MonoBehaviour
         if (agent.isOnNavMesh)
             agent.SetDestination(walkPoint);
 
-        tankManager.Fire();
+        if(fireTime <= 0)
+        {
+            tankManager.Fire();
+            fireTime = fireCD;
+        }
 
         towerRotation();
+    }
+
+    private void FireCDUpdate()
+    {
+        if (fireTime > 0f)
+            fireTime -= Time.deltaTime;
+        else
+            fireTime = 0f;
     }
 
     private void randomTowerRotation()

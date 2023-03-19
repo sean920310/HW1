@@ -22,9 +22,11 @@ public class TankManager : MonoBehaviour
     public WheelCollider[] rightWheelColliders;
     public WheelCollider[] leftWheelColliders;
 
-    public float HorizontalForce, Force, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
+    public float Force, MaxSpeed, RotSpeed, breakForce, towerRotationSpeed, canonRotationSpeed;
 
+    [ReadOnly]
     public float originTowerRotationSpeed;
+    [ReadOnly]
     public float originCanonRotationSpeed;
 
     Vector3 pos;
@@ -81,7 +83,6 @@ public class TankManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (skillManager != null)
         {
             regenerationCounter += Time.deltaTime;
@@ -132,15 +133,20 @@ public class TankManager : MonoBehaviour
         rightPower = VerticalAxis;
         leftPower = VerticalAxis;
 
-        if(VerticalAxis < 0f) // backu
+        //if(VerticalAxis < 0f) // backu
+        //{
+        //    rightPower -= HorizontalAxis * -RotSpeed;
+        //    leftPower += HorizontalAxis * -RotSpeed;
+        //}
+        //else
+        //{
+        //    rightPower -= HorizontalAxis * RotSpeed * HorizontalForce;
+        //    leftPower += HorizontalAxis * RotSpeed * HorizontalForce;
+        //}
+
+        if(HorizontalAxis != 0 )
         {
-            rightPower -= HorizontalAxis * -RotSpeed;
-            leftPower += HorizontalAxis * -RotSpeed;
-        }
-        else
-        {
-            rightPower -= HorizontalAxis * RotSpeed * HorizontalForce;
-            leftPower += HorizontalAxis * RotSpeed * HorizontalForce;
+            gameObject.transform.Rotate(0, HorizontalAxis * RotSpeed * Time.deltaTime, 0);
         }
 
 
@@ -148,11 +154,15 @@ public class TankManager : MonoBehaviour
         {
             if(wheelCols.attachedRigidbody.velocity.magnitude <= 0.1f)
             {
-                wheelCols.motorTorque = rightPower * Force * Time.deltaTime;
+                wheelCols.motorTorque = rightPower * Force * 10f;
+            }
+            else if(wheelCols.attachedRigidbody.velocity.magnitude >= MaxSpeed)
+            {
+                wheelCols.motorTorque = 0;
             }
             else
             {
-                wheelCols.motorTorque = rightPower * Force * Time.deltaTime;
+                wheelCols.motorTorque = rightPower * Force ;
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -169,11 +179,15 @@ public class TankManager : MonoBehaviour
         {
             if (wheelCols.attachedRigidbody.velocity.magnitude <= 0.1f)
             {
-                wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
+                wheelCols.motorTorque = leftPower * Force * 10f;
+            }
+            else if (wheelCols.attachedRigidbody.velocity.magnitude >= MaxSpeed)
+            {
+                wheelCols.motorTorque = 0;
             }
             else
             {
-                wheelCols.motorTorque = leftPower * Force * Time.deltaTime;
+                wheelCols.motorTorque = leftPower * Force;
             }
 
             if (Input.GetKey(KeyCode.Space))

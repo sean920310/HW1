@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     }
     private void win()
     {
-        gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, false);
+        gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, true);
         GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
         bgm.GetComponent<AudioSource>().Pause();
 
