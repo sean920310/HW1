@@ -59,7 +59,7 @@ public class TankManager : MonoBehaviour
     public float lowHealthHint = 20f;
 
     private float regenerationCounter;
-    private float regenerationTime = 1.0f;
+    [SerializeField] private float regenerationTime = 1.0f;
 
     private float waterDamageCounter = 1f;
 

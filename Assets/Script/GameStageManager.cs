@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameStageManager : MonoBehaviour
 {
+    [SerializeField] Animator StageClearAnimator;
+
     [SerializeField] AudioSource StageStartSound;
     [SerializeField] AudioSource CountDownAudio;
     [SerializeField] AudioSource FirstBGM;
@@ -183,6 +185,8 @@ public class GameStageManager : MonoBehaviour
             if (enemyList.transform.childCount == 0 && _enemySpawnCount == 0)
             {
                 // current stage clear
+                StageClearAnimator.SetTrigger("stageClear");
+
                 skillManager.addExp(_stages[_currentStage].stageClearExp);
 
                 _enemySpawnCount = _stages[_currentStage].EnemyCount;

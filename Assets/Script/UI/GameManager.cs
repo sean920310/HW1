@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource winAudio;
     [SerializeField] private AudioSource lossAudio;
 
-    [SerializeField] private GameMenuManager gameMenuManager; 
+    [SerializeField] private GameMenuManager gameMenuManager;
 
     private float dieCounter = 0.0f;
 
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
     {
         if (gsm.stageAllClear)
         {
-            win();
+            StartCoroutine(win());
         }
         if(playerTM.health <= 0) // gameover
         {
-            lose();
+            StartCoroutine(lose());
         }
 
         if(Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.E))
@@ -58,13 +58,18 @@ public class GameManager : MonoBehaviour
 
         if(dieCounter > 3.0f )
         {
-
-            lose();
+            StartCoroutine(lose());
         }
     }
 
-    private void lose()
+    private IEnumerator lose()
     {
+        gameMenuManager.setHUD(false);
+
+        yield return new WaitForSeconds(2f);
+
+        gameMenuManager.setHUD(true);
+
         if (!lossAudio.isPlaying)
             lossAudio.Play();
         gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, true);
@@ -79,8 +84,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
 
     }
-    public void win()
+    public IEnumerator win()
     {
+        gameMenuManager.setHUD(false);
+
+        yield return new WaitForSeconds(2f);
+
+        gameMenuManager.setHUD(true);
+
         if (!winAudio.isPlaying)
             winAudio.Play();
         gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, true);
