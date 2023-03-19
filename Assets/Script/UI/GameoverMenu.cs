@@ -8,14 +8,11 @@ using UnityEngine.SceneManagement;
 // reference: https://www.youtube.com/watch?v=JivuXdrIHK0&ab_channel=Brackeys
 public class GameoverMenu : MonoBehaviour
 {
-    private AudioSource clickAudio;
-
     private bool isAnimationPlay = false;
     private Animator animator;
 
     void Start()
     {
-        clickAudio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 

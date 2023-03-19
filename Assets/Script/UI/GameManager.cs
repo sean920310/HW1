@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverMenuUI;
     public TextMeshProUGUI gameoverMessage;
 
+    [SerializeField] private AudioSource winAudio;
+    [SerializeField] private AudioSource lossAudio;
+
     [SerializeField] private GameMenuManager gameMenuManager; 
 
     private float dieCounter = 0.0f;
@@ -27,10 +30,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1.0f;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         playerTM = player.GetComponent<TankManager>();
 
         gsm = GetComponent<GameStageManager>();
@@ -66,6 +65,8 @@ public class GameManager : MonoBehaviour
 
     private void lose()
     {
+        if (!lossAudio.isPlaying)
+            lossAudio.Play();
         gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, true);
         GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
         bgm.GetComponent<AudioSource>().Pause();
@@ -78,8 +79,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0.0f;
 
     }
-    private void win()
+    public void win()
     {
+        if (!winAudio.isPlaying)
+            winAudio.Play();
         gameMenuManager.setState(GameMenuManager.MenuStates.Gameover, true);
         GameObject bgm = GameObject.FindGameObjectWithTag("BackGroundMusic");
         bgm.GetComponent<AudioSource>().Pause();

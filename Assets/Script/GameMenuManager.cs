@@ -11,7 +11,8 @@ public class GameMenuManager : MonoBehaviour
         Pause       = 1 << 1,
         Map         = 1 << 2,
         Skill       = 1 << 3,
-        Cheat       = 1 << 4
+        Cheat       = 1 << 4,
+        Guide       = 1 << 5,
     }
 
     [SerializeField] private GameObject GameoverMenu;
@@ -19,33 +20,46 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] private GameObject MapMenu;
     [SerializeField] private GameObject SkillMenu;
     [SerializeField] private GameObject CheatMenu;
+    [SerializeField] private GameObject GuideMenu;
 
-    public static uint menuState = 0;
+    public static bool firstGame = true;
+    public static uint menuState = 1 << 5;
+
     void Start()
     {
-        
+        if(firstGame)
+        {
+            firstGame = false;
+            showCursorAndPause();
+        }
+        else
+        {
+            hideCursorAndStart();
+        }
     }
 
+    private void OnDestroy()
+    {
+        menuState = 0;
+    }
     // Update is called once per frame
     void Update()
     {
         if (GameoverMenu.activeSelf)
         {
-
-            Time.timeScale = 1.0f;
-            GameoverMenu.SetActive(getState(MenuStates.Gameover));
+            StartCoroutine(gameoverAnim());
         }
 
         PauseMenu.SetActive(getState(MenuStates.Pause));
         MapMenu.SetActive(getState(MenuStates.Map));
         SkillMenu.SetActive(getState(MenuStates.Skill));
         CheatMenu.SetActive(getState(MenuStates.Cheat));
+        GuideMenu.SetActive(getState(MenuStates.Guide));
 
         if (!getState(MenuStates.Gameover))
         {
             if (menuState == 0)
             {
-
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     showCursorAndPause();
@@ -65,6 +79,11 @@ public class GameMenuManager : MonoBehaviour
                 {
                     showCursorAndPause();
                     setState(MenuStates.Cheat, true);
+                }
+                else if (Input.GetKeyDown(KeyCode.P))
+                {
+                    showCursorAndPause();
+                    setState(MenuStates.Guide, true);
                 }
             }
             else
@@ -88,6 +107,11 @@ public class GameMenuManager : MonoBehaviour
                 {
                     hideCursorAndStart();
                     setState(MenuStates.Cheat, false);
+                }
+                else if (Input.GetKeyDown(KeyCode.P))
+                {
+                    hideCursorAndStart();
+                    setState(MenuStates.Guide, false);
                 }
             }
         }
@@ -130,5 +154,17 @@ public class GameMenuManager : MonoBehaviour
         Time.timeScale = 0.0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    IEnumerator gameoverAnim()
+    {
+        menuState = 0;
+        setState(MenuStates.Gameover, true);
+        Time.timeScale = 0.0f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        showCursorAndPause();
+        GameoverMenu.SetActive(getState(MenuStates.Gameover));
     }
 }
