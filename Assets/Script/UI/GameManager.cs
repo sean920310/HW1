@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameoverMenuUI;
     public TextMeshProUGUI gameoverMessage;
+    public TextMeshProUGUI gameoverTitle;
 
     [SerializeField] private AudioSource winAudio;
     [SerializeField] private AudioSource lossAudio;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         gameoverMenuUI.SetActive(true);
+        gameoverTitle.text = "DEFEAT";
         gameoverMessage.text = "You Lose, Bye.";
         Time.timeScale = 0.0f;
 
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         gameoverMenuUI.SetActive(true);
+        gameoverTitle.text = "VICTORY";
         gameoverMessage.text = "You Win!";
         Time.timeScale = 0.0f;
 
